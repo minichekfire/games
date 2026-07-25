@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Melee combat survival game.">
     <title>The Late Light</title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --secondary-color: #4d7cff;
-            --secondary-dark: #0039cb;
-            --secondary-light: #6691ff;
-            --accent-red: #ff4d4d;
-            --accent-orange: #ff994d;
-            --bg-dark: #0b0b0f;
-            --bg-darker: #050508;
-            --bg-card-secondary: rgba(5, 10, 20, 0.7);
-            --text-light: #f0f0f0;
-            --text-dim: #e0e0e0;
-            --text-accent: #ffb3b3;
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-            --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.3);
+            --bg-deep: #05070f;
+            --bg-panel: #0b1020;
+            --bg-panel-2: #10162b;
+            --line: #1e2740;
+            --blue-1: #0d1730;
+            --blue-2: #16224a;
+            --blue-glow: #2c4a9e;
+            --accent-red: #c22e3a;
+            --accent-red-bright: #ef3b48;
+            --text-main: #e7ebf7;
+            --text-dim: #8b93b0;
+            --text-faint: #545d7d;
         }
 
         * {
@@ -34,754 +29,797 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: "Share Tech Mono", monospace;
-            background: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background: radial-gradient(ellipse 900px 500px at 15% -10%, rgba(44,74,158,0.28), transparent 60%), radial-gradient(ellipse 700px 500px at 100% 10%, rgba(194,46,58,0.10), transparent 55%), var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
+            line-height: 1.5;
         }
 
-        header {
-            background: rgba(0, 5, 15, 0.9);
-            padding: 1.5rem 2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--secondary-dark);
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 3.2rem;
-            color: var(--secondary-light);
-            letter-spacing: 1.5px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2.5rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .game-title {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .game-badge {
+        ::selection {
             background: var(--accent-red);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            color: #fff;
         }
 
-        .back-container {
-            margin-bottom: 1.5rem;
-        }
-
-        .back {
-            background: rgba(30, 10, 10, 0.7);
-            color: #da7272;
-            border: 1px solid rgba(242, 88, 88, 0.7);
-            padding: 0.6rem 1.2rem;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.95rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: var(--transition);
-            display: inline-flex;
+        /* ---------- top strip ---------- */
+        .strip {
+            border-bottom: 1px solid var(--line);
+            background: rgba(11,16,32,0.7);
+            backdrop-filter: blur(6px);
+            padding: 14px 6vw;
+            display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }
 
-            .back:hover {
-                background: rgba(45, 15, 15, 0.9);
-                color: #ff9999;
-                border-color: #ff6666;
-            }
-
-        .game-info {
-            display: flex;
-            gap: 1.8rem;
-            margin-bottom: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            flex: 1;
-            min-width: 300px;
-            background: var(--bg-card-secondary);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(0, 40, 90, 0.5);
-            transition: var(--transition);
-            box-shadow: var(--shadow-card);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .card-header {
+        .brand {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 1.05rem;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 1.2rem;
         }
 
-        .card-icon {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-        }
-
-        h2 {
-            color: var(--secondary-light);
-            margin: 0;
-            font-size: 1.9rem;
-        }
-
-        .feature-list {
-            list-style-type: none;
-            padding: 0;
-            flex-grow: 1;
-        }
-
-            .feature-list li {
-                margin-bottom: 1rem;
-                padding-left: 1.8rem;
-                position: relative;
-                color: var(--text-dim);
-                padding-top: 4px;
+            .brand .dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--accent-red-bright);
+                box-shadow: 0 0 10px var(--accent-red-bright);
             }
 
-                .feature-list li::before {
-                    content: "▸";
-                    position: absolute;
-                    left: 0;
-                    top: 4px;
-                    color: var(--secondary-color);
-                    font-weight: bold;
+        .strip-links {
+            display: flex;
+            gap: 28px;
+        }
+
+            .strip-links a {
+                color: var(--text-dim);
+                text-decoration: none;
+                font-size: 0.82rem;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: color .2s;
+            }
+
+                .strip-links a:hover {
+                    color: var(--text-main);
                 }
 
-        .download-section {
-            background: rgba(5, 10, 15, 0.9);
-            padding: 2.8rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            margin-top: 2rem;
-            border: 2px solid var(--secondary-color);
-            box-shadow: var(--shadow-card);
-            transition: var(--transition);
+        /* ---------- hero ---------- */
+        .hero {
+            position: relative;
+            padding: 8vw 6vw 5vw;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
         }
 
-            .download-section:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            .hero::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: linear-gradient(rgba(20,28,54,0.9), rgba(5,7,15,1)), repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 90px);
+                z-index: -1;
             }
 
-        .download-title {
-            margin-bottom: 1rem;
-            font-size: 2.3rem;
-            color: var(--secondary-light);
-        }
-
-        .version {
-            font-size: 1.2rem;
-            margin-bottom: 1.8rem;
-            color: var(--text-dim);
-        }
-
-        .download-buttons {
-            display: flex;
-            justify-content: center;
+        .eyebrow {
+            display: inline-flex;
             align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            gap: 8px;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-red-bright);
+            border: 1px solid rgba(239,59,72,0.35);
+            background: rgba(194,46,58,0.08);
+            padding: 6px 12px;
+            border-radius: 100px;
+            margin-bottom: 26px;
         }
 
-        .download-link {
+            .eyebrow i {
+                font-size: 0.7rem;
+            }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: clamp(2.6rem, 7vw, 5.6rem);
+            line-height: 0.95;
+            letter-spacing: 0.01em;
+            color: #fff;
+        }
+
+            h1 .the {
+                display: block;
+                font-size: 0.32em;
+                font-weight: 500;
+                color: var(--text-faint);
+                letter-spacing: 0.3em;
+                margin-bottom: 6px;
+            }
+
+            h1 .glow {
+                color: var(--accent-red-bright);
+                text-shadow: 0 0 30px rgba(239,59,72,0.5), 0 0 70px rgba(239,59,72,0.25);
+            }
+
+        .lede {
+            max-width: 640px;
+            margin-top: 26px;
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+            .lede strong {
+                color: var(--text-main);
+            }
+
+            .lede small {
+                display: block;
+                margin-top: 14px;
+                color: var(--text-faint);
+                font-style: italic;
+            }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+            .tags span {
+                font-size: 0.72rem;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--text-dim);
+                border: 1px solid var(--line);
+                background: var(--bg-panel);
+                padding: 7px 13px;
+                border-radius: 6px;
+            }
+
+                .tags span i {
+                    color: var(--accent-red-bright);
+                    margin-right: 6px;
+                }
+
+        /* ---------- install section ---------- */
+        .install {
+            padding: 5vw 6vw;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+            .section-head .num {
+                font-family: 'Oswald', sans-serif;
+                font-size: 0.85rem;
+                color: var(--accent-red-bright);
+                letter-spacing: 0.1em;
+            }
+
+            .section-head h2 {
+                font-family: 'Oswald', sans-serif;
+                text-transform: uppercase;
+                font-size: 1.6rem;
+                letter-spacing: 0.03em;
+                color: #fff;
+            }
+
+            .section-head .rule {
+                flex: 1;
+                height: 1px;
+                background: linear-gradient(90deg, var(--line), transparent);
+            }
+
+        .downloads {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 22px;
+        }
+
+        @media (max-width:820px) {
+            .downloads {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dl-card {
+            position: relative;
+            border-radius: 14px;
+            padding: 30px 30px 26px;
+            border: 1px solid var(--line);
+            background: linear-gradient(160deg, var(--blue-1), var(--bg-panel) 70%);
+            overflow: hidden;
+        }
+
+            .dl-card.primary {
+                border-color: rgba(44,74,158,0.6);
+                box-shadow: 0 0 0 1px rgba(44,74,158,0.25), 0 30px 60px -30px rgba(44,74,158,0.5);
+            }
+
+                .dl-card.primary::after {
+                    content: "";
+                    position: absolute;
+                    top: -40%;
+                    right: -20%;
+                    width: 280px;
+                    height: 280px;
+                    background: radial-gradient(circle, rgba(44,74,158,0.45), transparent 70%);
+                    pointer-events: none;
+                }
+
+            .dl-card .badge {
+                display: inline-block;
+                font-size: 0.68rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 4px 10px;
+                border-radius: 100px;
+                margin-bottom: 16px;
+            }
+
+            .dl-card.primary .badge {
+                background: rgba(44,74,158,0.3);
+                color: #9fb3ff;
+                border: 1px solid rgba(120,150,255,0.35);
+            }
+
+            .dl-card.old .badge {
+                background: rgba(194,46,58,0.15);
+                color: var(--accent-red-bright);
+                border: 1px solid rgba(194,46,58,0.35);
+            }
+
+            .dl-card h3 {
+                font-family: 'Oswald', sans-serif;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                color: #fff;
+                margin-bottom: 6px;
+            }
+
+            .dl-card p {
+                color: var(--text-dim);
+                font-size: 0.92rem;
+                margin-bottom: 22px;
+            }
+
+            .dl-card .filename {
+                display: block;
+                font-family: monospace;
+                font-size: 0.78rem;
+                color: var(--text-faint);
+                margin-bottom: 20px;
+                word-break: break-all;
+            }
+
+        .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color));
-            color: white;
-            padding: 16px 36px;
-            border-radius: 50px;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 9px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.15rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 57, 203, 0.4);
-            min-width: 300px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: transform .15s ease, filter .15s ease;
         }
 
-            .download-link i {
-                font-size: 1.4rem;
-            }
-
-            .download-link:hover {
+            .btn:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(0, 57, 203, 0.6);
+                filter: brightness(1.1);
             }
 
-            .download-link.old-version {
-                background: linear-gradient(135deg, #800000, #ff4d4d);
-                box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+            .btn:active {
+                transform: translateY(0);
             }
 
-                .download-link.old-version:hover {
-                    box-shadow: 0 6px 20px rgba(255, 77, 77, 0.6);
-                }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-glow), #1a2c66);
+            color: #fff;
+            box-shadow: 0 10px 30px -10px rgba(44,74,158,0.7);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(194,46,58,0.4);
+            color: var(--accent-red-bright);
+        }
+
+            .btn-outline:hover {
+                background: rgba(194,46,58,0.08);
+            }
+
+        .steps {
+            margin-top: 44px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width:820px) {
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step {
+            padding: 20px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--bg-panel);
+        }
+
+            .step .n {
+                font-family: 'Oswald', sans-serif;
+                font-size: 1.6rem;
+                color: var(--blue-glow);
+                margin-bottom: 10px;
+            }
+
+            .step h4 {
+                font-size: 0.95rem;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                margin-bottom: 6px;
+                color: #fff;
+            }
+
+            .step p {
+                color: var(--text-dim);
+                font-size: 0.85rem;
+            }
+
+        /* ---------- changelog trigger section ---------- */
+        .changelog-cta {
+            padding: 5vw 6vw 7vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+            .changelog-cta .txt h2 {
+                font-family: 'Oswald', sans-serif;
+                text-transform: uppercase;
+                font-size: 1.6rem;
+                color: #fff;
+                margin-bottom: 8px;
+            }
+
+            .changelog-cta .txt p {
+                color: var(--text-dim);
+                max-width: 480px;
+            }
 
         .changelog-btn {
-            background: rgba(10, 20, 50, 0.8);
-            color: #9999ff;
-            border: 1px solid rgba(0, 64, 128, 0.7);
-            padding: 14px 28px;
-            font-family: "Share Tech Mono", monospace;
-            font-size: 1.05rem;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            min-width: 220px;
+            padding: 15px 26px;
+            border-radius: 9px;
+            background: var(--bg-panel-2);
+            border: 1px solid var(--line);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: border-color .2s, color .2s;
         }
-
-            .changelog-btn i {
-                font-size: 1.2rem;
-            }
 
             .changelog-btn:hover {
-                background: rgba(15, 30, 80, 0.95);
-                color: #fff;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(0, 57, 203, 0.4);
-                border-color: rgba(77, 124, 255, 0.9);
+                border-color: var(--accent-red-bright);
+                color: var(--accent-red-bright);
             }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 3, 10, 0.95);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+        footer {
+            text-align: center;
+            padding: 26px;
+            color: var(--text-faint);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--line);
         }
 
-            .modal-overlay.active {
-                opacity: 1;
-                pointer-events: all;
+        /* ================= MODAL / CHANGELOG ================= */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(3,5,12,0.82);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 4vh 3vw;
+        }
+
+            .modal-overlay.open {
+                display: flex;
             }
 
         .modal-content {
-            background: rgba(5, 10, 20, 0.97);
-            color: var(--text-light);
-            width: 90%;
-            max-width: 950px;
-            max-height: 85vh;
-            padding: 2.5rem;
-            border: 1px solid var(--secondary-dark);
-            border-radius: var(--border-radius);
-            overflow-y: auto;
-            box-shadow: 0 0 30px rgba(0, 57, 203, 0.4);
             position: relative;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.2rem;
-            background: rgba(28, 59, 183, 0.8);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-weight: bold;
-            cursor: pointer;
+            width: min(920px, 100%);
+            max-height: 88vh;
+            background: linear-gradient(175deg, var(--bg-panel-2), var(--bg-panel) 60%);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px 30px 20px;
+            box-shadow: 0 40px 100px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(44,74,158,0.15);
             display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: var(--transition);
-            font-size: 1.2rem;
+            flex-direction: column;
+            overflow: hidden;
         }
-
-            .close-modal:hover {
-                background: var(--secondary-color);
-            }
 
         .modal-title {
-            font-size: 2.2rem;
-            margin-bottom: 1.8rem;
-            color: var(--secondary-light);
-            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 1.5rem;
+            color: #fff;
         }
 
         .changelog-wrapper {
             display: flex;
-            gap: 1.5rem;
-            height: 70vh;
-            margin-top: 1rem;
+            flex-direction: column;
+            overflow: hidden;
+            flex: 1;
         }
 
         .changelog-tabs {
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            width: 220px;
-            flex-shrink: 0;
-            border-right: 1px solid rgba(77, 124, 255, 0.2);
-            padding-right: 1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+            max-height: 150px;
             overflow-y: auto;
-            padding-bottom: 1rem;
         }
 
-            .changelog-tabs::-webkit-scrollbar {
-                width: 6px;
-            }
-
-            .changelog-tabs::-webkit-scrollbar-track {
-                background: rgba(5, 10, 20, 0.3);
-            }
-
-            .changelog-tabs::-webkit-scrollbar-thumb {
-                background: var(--secondary-dark);
-            }
-
         .tab-btn {
-            background: rgba(10, 20, 30, 0.6);
-            color: #9999ff;
-            border: 1px solid rgba(0, 64, 128, 0.4);
-            padding: 0.8rem 1rem;
-            font-family: "Share Tech Mono", monospace;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.76rem;
+            letter-spacing: 0.02em;
+            color: var(--text-dim);
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            padding: 7px 12px;
+            border-radius: 7px;
             cursor: pointer;
-            border-radius: 8px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            text-align: left;
-            width: 100%;
             white-space: nowrap;
+            transition: all .15s;
         }
 
             .tab-btn:hover {
-                background: rgba(15, 30, 60, 0.9);
-                color: #fff;
-                border-color: rgba(77, 124, 255, 0.6);
+                color: var(--text-main);
+                border-color: var(--blue-glow);
             }
 
             .tab-btn.active {
-                background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color));
-                color: white;
-                font-weight: bold;
-                border: none;
+                background: linear-gradient(135deg, var(--blue-glow), #16224a);
+                color: #fff;
+                border-color: var(--blue-glow);
+            }
+            /* unreleased / beta-in-dev versions shown red, per legend — newest (v2.7) flagged unreleased */
+            .tab-btn[data-tab="v2.7"] {
+                color: var(--accent-red-bright);
+                border-color: rgba(194,46,58,0.4);
             }
 
-            .tab-btn.unreleased {
-                color: var(--accent-red);
-                border-color: rgba(255, 77, 77, 0.3);
+                .tab-btn[data-tab="v2.7"].active {
+                    background: linear-gradient(135deg, var(--accent-red), #7a1b24);
+                    color: #fff;
+                    border-color: var(--accent-red-bright);
+                }
+
+        .changelog-content-area {
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+            .changelog-content-area::-webkit-scrollbar,
+            .changelog-tabs::-webkit-scrollbar {
+                width: 7px;
+                height: 7px;
             }
 
-                .tab-btn.unreleased:hover {
-                    background: rgba(40, 10, 10, 0.9);
-                    color: #ff9999;
-                    border-color: rgba(255, 77, 77, 0.6);
-                }
-
-                .tab-btn.unreleased.active {
-                    background: linear-gradient(135deg, #800000, var(--accent-red));
-                    color: white;
-                    border: none;
-                }
+            .changelog-content-area::-webkit-scrollbar-thumb,
+            .changelog-tabs::-webkit-scrollbar-thumb {
+                background: var(--line);
+                border-radius: 10px;
+            }
 
         .tab-content {
             display: none;
+            animation: fade .2s ease;
         }
 
             .tab-content.active {
                 display: block;
             }
 
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .changelog-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(15, 25, 40, 0.4);
-            border-radius: 12px;
-            border-left: 3px solid rgba(77, 124, 255, 0.3);
+            margin-bottom: 20px;
         }
 
             .changelog-section h3 {
-                color: var(--secondary-light);
-                margin: 0 0 1rem 0;
-                font-size: 1.4rem;
-                font-weight: 700;
+                font-family: 'Oswald', sans-serif;
                 text-transform: uppercase;
-                letter-spacing: 1px;
+                font-size: 0.82rem;
+                letter-spacing: 0.08em;
+                color: var(--blue-glow);
+                margin-bottom: 10px;
             }
 
-        .section-additions h3 {
-            color: var(--accent-orange);
-        }
-
-        .section-bugfixes h3 {
-            color: var(--accent-red);
-        }
+            .changelog-section:nth-of-type(3) h3 {
+                color: var(--accent-red-bright);
+            }
 
         .changelog-list {
-            list-style-type: none;
-            padding-left: 1.5rem;
-            margin: 0;
+            list-style: none;
         }
 
             .changelog-list li {
-                margin-bottom: 0.7rem;
                 position: relative;
-                padding: 8px 12px;
-                line-height: 1.6;
+                padding: 5px 0 5px 18px;
+                color: var(--text-dim);
+                font-size: 0.88rem;
+                line-height: 1.5;
             }
 
                 .changelog-list li::before {
-                    content: "▸";
+                    content: "—";
                     position: absolute;
-                    left: -1.3rem;
-                    color: var(--secondary-color);
-                    font-weight: bold;
+                    left: 0;
+                    color: var(--text-faint);
                 }
 
-        .section-additions .changelog-list li::before {
-            color: var(--accent-orange);
+        .changelog-section:empty,
+        .changelog-section:has(.changelog-list:empty) {
+            display: none;
         }
 
-        .section-bugfixes .changelog-list li::before {
-            color: var(--accent-red);
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(77, 124, 255, 0.2);
-        }
-
-        .external-link {
-            color: #9999ff;
-            text-decoration: none;
-            transition: var(--transition);
-            margin: 0 10px;
-        }
-
-            .external-link:hover {
-                color: #ccccff;
-            }
-
-        .gallery-section {
-            margin: 2.5rem 0;
-            padding: 0 1.5rem;
-        }
-
-        .gallery-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--secondary-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-            .gallery-grid img {
-                width: 100%;
-                height: auto;
-                border-radius: var(--border-radius);
-                border: 1px solid rgba(77, 124, 255, 0.2);
-                transition: var(--transition);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                cursor: pointer;
-            }
-
-                .gallery-grid img:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 8px 20px rgba(77, 124, 255, 0.2);
-                    border-color: var(--secondary-color);
-                }
-
-        #lightbox-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-            #lightbox-modal.active {
-                opacity: 1;
-                pointer-events: all;
-            }
-
-        #lightbox-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit: contain;
-            border: 2px solid var(--secondary-color);
-        }
-
-        #close-lightbox {
+        .close-modal {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            border: none;
-            font-size: 1.4rem;
+            border: 1px solid var(--line);
+            background: var(--bg-panel);
+            color: var(--text-dim);
             cursor: pointer;
             display: flex;
-            justify-content: center;
             align-items: center;
-            transition: var(--transition);
+            justify-content: center;
+            transition: all .15s;
         }
 
-            #close-lightbox:hover {
-                background: var(--secondary-color);
+        .close-modal:hover {
+            color: #fff;
+            border-color: var(--accent-red-bright);
+            background: rgba(194,46,58,0.1);
+        }
+
+        .screenshots-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+
+            .screenshots-section .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
             }
 
-        @media (max-width: 900px) {
-            .game-info {
-                flex-direction: column;
-            }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
 
-            .download-link,
-            .changelog-btn {
-                width: 100%;
-                max-width: 350px;
-                justify-content: center;
-            }
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .screenshot-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 16 / 9;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover img {
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.4rem;
+            .screenshots-grid {
+                grid-template-columns: 1fr;
             }
 
-            .logo-icon {
+            .section-title {
                 font-size: 2rem;
             }
+        }
 
-            .container {
-                padding: 0 1rem;
-            }
-
-            .download-section {
-                padding: 2rem 1.5rem;
-            }
-
+        @media (max-width:600px) {
             .modal-content {
-                padding: 1.8rem;
-                margin: 1rem;
-            }
-
-            .changelog-wrapper {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .changelog-tabs {
-                width: 100%;
-                flex-direction: row;
-                overflow-x: auto;
-                border-right: none;
-                border-bottom: 1px solid rgba(77, 124, 255, 0.2);
-                padding-right: 0;
-                padding-bottom: 1rem;
-            }
-
-            .tab-btn {
-                width: auto;
-                white-space: nowrap;
+                padding: 22px 18px 16px;
             }
         }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(5, 10, 20, 0.6);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary-dark);
-            border: 2px solid rgba(5, 10, 20, 0.6);
-        }
-
-            ::-webkit-scrollbar-thumb:hover {
-                background: var(--secondary-color);
-            }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="back-container">
-            <a href="https://minichekfire.github.io/infinitarium-d/" class="back">
-                <i class="fas fa-arrow-left"></i> Back to Main
-            </a>
-        </div>
 
-        <div class="game-title">
-            <h2>The Late Light</h2>
-            <div class="game-badge">BETA | WIP</div>
-        </div>
-
-        <div class="download-section">
-            <h2 class="download-title"><i class="fas fa-download"></i> Download</h2>
-
-            <div class="download-buttons">
-                <a href="https://github.com/minichekfire/infinitarium-d/releases/download/v2/The.Late.Light.zip"
-                   target="_blank" class="download-link">
-                    <i class="fas fa-box"></i> Download The Late Light
-                </a>
-                <a href="https://github.com/minichekfire/infinitarium-d/releases/download/v2/Infinitarium.Close.Quarters.OLD.zip"
-                   target="_blank" class="download-link old-version">
-                    <i class="fas fa-flask"></i> Download Infinitarium: CQ
-                </a>
-            </div>
-
-            <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
-                <button class="changelog-btn" onclick="showChangelog()">
-                    <i class="fas fa-history"></i> View Version Changelog
-                </button>
-            </div>
-        </div>
-
-        <div class="gallery-section">
-            <h2 class="gallery-title">Game Screenshots</h2>
-            <div class="gallery-grid">
-                <img src="img/icq/screenshot1.png" alt="Game Screenshot 1" loading="lazy">
-                <img src="img/icq/screenshot2.png" alt="Game Screenshot 2" loading="lazy">
-                <img src="img/icq/screenshot3.png" alt="Game Screenshot 3" loading="lazy">
-                <img src="img/icq/screenshot4.png" alt="Game Screenshot 4" loading="lazy">
-            </div>
-        </div>
-
-        <div class="game-info">
-            <div class="card description">
-                <div class="card-header">
-                    <i class="fas fa-book card-icon" aria-hidden="true"></i>
-                    <h2>Description</h2>
-                </div>
-                <p>
-                    <strong>The Late Light</strong> - game that focuses on close combat and
-                    survival. To survive, you need to find weapons to protect yourself or attack the others. This is a
-                    multiplayer game, meaning you can be harmed not only by NPCs or the environment, but also by other
-                    players. You can parkour to reach certain places. <br><small>Inspired by Dying Light Series</small>
-                </p>
-                <p style="margin-top: 1rem; color: var(--text-accent); font-style: italic;">
-                    Expect a lot of bugs and
-                    changes, the game is in BETA.
-                </p>
-            </div>
-
-            <div class="card features">
-                <div class="card-header">
-                    <i class="fas fa-star card-icon" aria-hidden="true"></i>
-                    <h2>Features</h2>
-                </div>
-                <ul class="feature-list">
-                    <li>Melee combat system: blocking and parrying</li>
-                    <li>Infection level: dark zones kills yuo</li>
-                    <li>Multiple weapons including Slashing, Blunting & Piercing</li>
-                    <li>Multiplayer & Singleplayer</li>
-                    <li>Bleeding system</li>
-                    <li>Day & night cycle</li>
-                    <li>Parkour System</li>
-                    <li>Skills Tree</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>
-                This project is being developed by <a href="https://www.youtube.com/@bigwater6464" class="external-link"
-                                                      target="_blank"><i class="fab fa-youtube"></i> bigWater6464</a>
-            </p>
-            <p style="margin-top: 0.5rem;">
-                <a href="https://t.me/infini_dev" class="external-link" target="_blank">
-                    <i class="fab fa-telegram"></i> Telegram Channel
-                </a>
-            </p>
+    <div class="strip">
+        <div class="brand"><span class="dot"></span>THE LATE LIGHT</div>
+        <div class="strip-links">
+            <a id="open-changelog-link">Changelog</a>
         </div>
     </div>
 
-    <!-- Changelog Modal -->
+    <section class="hero">
+        <span class="eyebrow"><i class="fas fa-skull-crossbones"></i> Ближний бой · Выживание · Мультиплеер</span>
+        <h1><span class="the">Добро пожаловать в</span>The Late <span class="glow">Light</span></h1>
+        <p class="lede">
+            <strong>The Late Light</strong> — игра, сфокусированная на ближнем бою и выживании.
+            Чтобы выжить, нужно находить оружие для защиты или нападения на других.
+            Это мультиплеерная игра — урон можно получить не только от NPC или окружения, но и от других игроков.
+            Паркур позволяет добраться до недоступных мест.
+            <small>Вдохновлено серией Dying Light.</small>
+        </p>
+        <div class="tags">
+            <span><i class="fas fa-users"></i>Multiplayer PvP/PvE</span>
+            <span><i class="fas fa-person-running"></i>Parkour</span>
+            <span><i class="fas fa-hand-fist"></i>Melee Combat</span>
+            <span><i class="fas fa-biohazard"></i>Survival</span>
+        </div>
+    </section>
+
+    <section class="install" id="install">
+        <div class="section-head">
+            <h2>Установка</h2>
+            <div class="rule"></div>
+        </div>
+
+        <div class="downloads">
+            <div class="dl-card primary">
+                <span class="badge"><i class="fas fa-check-circle"></i> Основная версия</span>
+                <h3>The Late Light</h3>
+                <p>Новейшая версия игры.</p>
+                <a class="btn btn-primary" href="https://github.com/minichekfire/infinitarium-d/releases/download/v2/The.Late.Light.zip">
+                    <i class="fas fa-download"></i> Скачать новейшую версию
+                </a>
+            </div>
+
+            <div class="dl-card old">
+                <span class="badge"><i class="fas fa-clock-rotate-left"></i> Старая версия</span>
+                <h3>Infinitarium: Close Quarters</h3>
+                <p>Старое название и старая версия игры.</p>
+                <a class="btn btn-outline" href="https://github.com/minichekfire/infinitarium-d/releases/download/v2/Infinitarium.Close.Quarters.OLD.zip">
+                    <i class="fas fa-download"></i> Скачать старую версию
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots-section">
+        <div class="container">
+            <h2 class="section-title">Скриншоты</h2>
+            <p class="section-subtitle">Геймплей The Late Light</p>
+
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <img src="img/icq/screenshot1.png" alt="The Late Light - Screenshot 1" loading="lazy">
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/icq/screenshot2.png" alt="The Late Light - Screenshot 2" loading="lazy">
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/icq/screenshot3.png" alt="The Late Light - Screenshot 3" loading="lazy">
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/icq/screenshot4.png" alt="The Late Light - Screenshot 4" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="changelog-cta">
+        <div class="txt">
+            <h2>Что нового?</h2>
+            <p>Полная история изменений игры — от самой первой альфа-версии до последнего бета-билда.</p>
+        </div>
+        <button class="changelog-btn" id="open-changelog-btn"><i class="fas fa-scroll"></i> Открыть Changelog</button>
+    </section>
+
+    <footer>Разработчик проекта - bigWater6464.</footer>
+
+    <!-- ================= CHANGELOG MODAL ================= -->
     <div id="changelog-modal" class="modal-overlay">
         <div class="modal-content">
             <div style="text-align: center; margin-bottom: 1rem;">
                 <h2 class="modal-title">Version Changelog</h2>
-                <span style="color: var(--accent-red); font-size: 0.9rem; opacity: 0.8;">
+                <span style="color: var(--accent-red-bright); font-size: 0.9rem; opacity: 0.8;">
                     <i class="fas fa-info-circle"></i> Red tabs indicate unreleased versions
                 </span>
             </div>
             <div class="changelog-wrapper">
                 <div class="changelog-tabs">
+                    <button class="tab-btn" data-tab="v2.7">v2.7 Beta (v17)</button>
                     <button class="tab-btn" data-tab="v2.6.4">v2.6.4 Beta (v16.4)</button>
                     <button class="tab-btn" data-tab="v2.6.3">v2.6.3 Beta (v16.3)</button>
                     <button class="tab-btn" data-tab="v2.6.2">v2.6.2 Beta (v16.2)</button>
@@ -812,7 +850,28 @@
                 </div>
 
                 <div class="changelog-content-area">
-                    <div id="v2.6.4" class="tab-content active">
+                    <div id="v2.7" class="tab-content active">
+                        <div class="changelog-section">
+                            <h3>Additions:</h3>
+                            <ul class="changelog-list">
+                                <li>Nothing here yet...</li>
+                            </ul>
+                        </div>
+                        <div class="changelog-section">
+                            <h3>Improvements:</h3>
+                            <ul class="changelog-list">
+<li>Full map rework</li>
+<li>Improved Menu Background</li>
+                            </ul>
+                        </div>
+                        <div class="changelog-section">
+                            <h3>Bug Fixes:</h3>
+                            <ul class="changelog-list">
+                                <li>Nothing here yet...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="v2.6.4" class="tab-content">
                         <div class="changelog-section">
                             <h3>Additions:</h3>
                             <ul class="changelog-list">
@@ -893,6 +952,7 @@
 <li>Improved NPCs</li>
 <li>Improved Bat Animations</li>
 <li>Removed Healthbars</li>
+<li>Replaced HDRP with URP</li>
                             </ul>
                         </div>
                     </div>
@@ -1459,89 +1519,43 @@
                 </button>
             </div>
         </div>
+    </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const modal = document.getElementById('changelog-modal');
+    <script>
+        const modal = document.getElementById('changelog-modal');
 
-                window.showChangelog = function () {
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                };
+        function showChangelog(){
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        }
+        function hideChangelog(){
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        }
 
-                window.hideChangelog = function () {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                };
+        document.getElementById('open-changelog-btn').addEventListener('click', showChangelog);
+        document.getElementById('open-changelog-link').addEventListener('click', showChangelog);
 
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        hideChangelog();
-                    }
-                });
+        modal.addEventListener('click', (e) => {
+        if(e.target === modal) hideChangelog();
+        });
+        document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') hideChangelog();
+        });
 
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && modal.classList.contains('active')) {
-                        hideChangelog();
-                    }
-                });
+        // tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
 
-                const tabButtons = document.querySelectorAll('.tab-btn');
-                const tabContents = document.querySelectorAll('.tab-content');
-
-                tabButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const tabId = button.getAttribute('data-tab');
-
-                        tabButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-
-                        tabContents.forEach(content => {
-                            content.classList.remove('active');
-                            if (content.id === tabId) {
-                                content.classList.add('active');
-                            }
-                        });
-                    });
-                });
-
-                const galleryImages = document.querySelectorAll('.gallery-grid img');
-                const lightboxModal = document.getElementById('lightbox-modal');
-                const lightboxImage = document.getElementById('lightbox-image');
-                const closeLightbox = document.getElementById('close-lightbox');
-
-                galleryImages.forEach(img => {
-                    img.addEventListener('click', () => {
-                        lightboxImage.src = img.src;
-                        lightboxModal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    });
-                });
-
-                closeLightbox.addEventListener('click', () => {
-                    lightboxModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-
-                lightboxModal.addEventListener('click', (e) => {
-                    if (e.target === lightboxModal) {
-                        lightboxModal.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
-                        lightboxModal.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            });
-        </script>
-        <div id="lightbox-modal">
-            <img id="lightbox-image" src="" alt="Fullscreen preview">
-            <button id="close-lightbox">&times;</button>
-        </div>
+        tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        });
+        });
+    </script>
 </body>
-
 </html>
