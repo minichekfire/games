@@ -575,17 +575,18 @@
                 color: #fff;
                 border-color: var(--blue-glow);
             }
-            /* unreleased / beta-in-dev versions shown red, per legend — newest (v2.7) flagged unreleased */
-            .tab-btn[data-tab="v2.7"] {
-                color: var(--accent-red-bright);
-                border-color: rgba(194,46,58,0.4);
-            }
 
-                .tab-btn[data-tab="v2.7"].active {
-                    background: linear-gradient(135deg, var(--accent-red), #7a1b24);
-                    color: #fff;
-                    border-color: var(--accent-red-bright);
-                }
+        /* unreleased / beta-in-dev versions shown red — managed automatically, do not edit manually */
+        .tab-btn[data-tab="v2.7"] {
+            color: var(--accent-red-bright);
+            border-color: rgba(194,46,58,0.4);
+        }
+
+            .tab-btn[data-tab="v2.7"].active {
+                background: linear-gradient(135deg, var(--accent-red), #7a1b24);
+                color: #fff;
+                border-color: var(--accent-red-bright);
+            }
 
         .changelog-content-area {
             overflow-y: auto;
@@ -902,20 +903,25 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="nothing_here">Nothing here yet...</li>
+<li data-lang-key="cl_v27_1">Added Crouch</li>
+<li data-lang-key="cl_v27_2">Added Slide</li>
+<li data-lang-key="cl_v27_3">Added safe roll sound</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v27_1">Полный редизайн карты</li>
-                                <li data-lang-key="cl_v27_2">Улучшен фон меню</li>
+<li data-lang-key="cl_v27_4">Full map rework</li>
+<li data-lang-key="cl_v27_5">Improved Menu Background</li>
+<li data-lang-key="cl_v27_6">Footstep sounds improvement</li>
+<li data-lang-key="cl_v27_7">Replaced IL2CPP with CoreCLR</li>
+<li data-lang-key="cl_v27_8">Improved transitions between locations</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="nothing_here">Nothing here yet...</li>
+<li data-lang-key="cl_v27_9">Nothing here yet...</li>
                             </ul>
                         </div>
                     </div>
@@ -923,27 +929,27 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v264_1">Добавлена кнопка переподключения</li>
-                                <li data-lang-key="cl_v264_2">Авторизация через PlayFab</li>
-                                <li data-lang-key="cl_v264_3">Система кровотечения (TAB)</li>
-                                <li data-lang-key="cl_v264_4">Бинты</li>
+<li data-lang-key="cl_v264_1">Added reconnect button</li>
+<li data-lang-key="cl_v264_2">PlayFab Authentication</li>
+<li data-lang-key="cl_v264_3">Bleeding System (TAB)</li>
+<li data-lang-key="cl_v264_4">Bandages</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v264_5">Улучшена регистрация попаданий</li>
-                                <li data-lang-key="cl_v264_6">Изменён цвет кожи по умолчанию</li>
-                                <li data-lang-key="cl_v264_7">Сохранение прогресса через PlayFab</li>
-                                <li data-lang-key="cl_v264_8">Удалена команда /nick</li>
-                                <li data-lang-key="cl_v264_9">Обновление игрового движка: 6.4 -> 6.7</li>
-                                <li data-lang-key="cl_v264_10">Игра переименована: Infinitarium: Close Quarters -> The Last Light</li>
+<li data-lang-key="cl_v264_5">Improved hitreg</li>
+<li data-lang-key="cl_v264_6">Changed default skin color</li>
+<li data-lang-key="cl_v264_7">PlayFab progress save</li>
+<li data-lang-key="cl_v264_8">Removed /nick command</li>
+<li data-lang-key="cl_v264_9">Game engine update: 6.4 -> 6.7</li>
+<li data-lang-key="cl_v264_10">Renamed game: Infinitarium: Close Quarters -> The Last Light</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v264_11">Исправлено: невозможно сменить язык</li>
+<li data-lang-key="cl_v264_11">Fixed language cannot be changed</li>
                             </ul>
                         </div>
                     </div>
@@ -951,13 +957,13 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v263_1">Навык безопасного переката</li>
+<li data-lang-key="cl_v263_1">Safe Roll Skill</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v263_2">Небольшие улучшения карты</li>
+<li data-lang-key="cl_v263_2">Small Map improvements</li>
                             </ul>
                         </div>
                     </div>
@@ -965,21 +971,21 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v262_1">Тросовые спуски (зиплайны)</li>
-                                <li data-lang-key="cl_v262_2">Кастомизация персонажа</li>
+<li data-lang-key="cl_v262_1">Ziplines</li>
+<li data-lang-key="cl_v262_2">Character Customization</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v262_3">Небольшие улучшения карты</li>
-                                <li data-lang-key="cl_v262_4">Удалена дневная и вечерняя музыка</li>
+<li data-lang-key="cl_v262_3">Small map improvements</li>
+<li data-lang-key="cl_v262_4">Removed Day & Evening music</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v262_5">Исправлена невозможность залезать на некоторые поверхности</li>
+<li data-lang-key="cl_v262_5">Fixed inability to ledge climb on some surfaces</li>
                             </ul>
                         </div>
                     </div>
@@ -987,20 +993,20 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v26_1">Одиночная игра</li>
-                                <li data-lang-key="cl_v26_2">Система ночной погони (в разработке)</li>
-                                <li data-lang-key="cl_v26_3">Мешки для мусора (без урона от падения)</li>
-                                <li data-lang-key="cl_v26_4">Новый NPC: Охотник</li>
+<li data-lang-key="cl_v26_1">Singleplayer</li>
+<li data-lang-key="cl_v26_2">Night Chase system (W.I.P.)</li>
+<li data-lang-key="cl_v26_3">Trashbags (No fall damage)</li>
+<li data-lang-key="cl_v26_4">New NPC: Hunter</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v26_5">Улучшена карта</li>
-                                <li data-lang-key="cl_v26_6">Улучшены NPC</li>
-                                <li data-lang-key="cl_v26_7">Улучшены анимации биты</li>
-                                <li data-lang-key="cl_v26_8">Удалены полоски здоровья</li>
-                                <li data-lang-key="cl_v26_9">HDRP заменён на URP</li>
+<li data-lang-key="cl_v26_5">Improved Map</li>
+<li data-lang-key="cl_v26_6">Improved NPCs</li>
+<li data-lang-key="cl_v26_7">Improved Bat Animations</li>
+<li data-lang-key="cl_v26_8">Removed Healthbars</li>
+<li data-lang-key="cl_v26_9">Replaced HDRP with URP</li>
                             </ul>
                         </div>
                     </div>
@@ -1008,25 +1014,25 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v25_1">Система захвата за уступы (в разработке)</li>
-                                <li data-lang-key="cl_v25_2">Система перепрыгивания препятствий (в разработке)</li>
+<li data-lang-key="cl_v25_1">Ledge grab parkour system (W.I.P.)</li>
+<li data-lang-key="cl_v25_2">Vault parkour system (W.I.P.)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v25_3">Улучшены аирдропы</li>
-                                <li data-lang-key="cl_v25_4">Улучшен звук</li>
-                                <li data-lang-key="cl_v25_5">Улучшена консоль логов (F8)</li>
-                                <li data-lang-key="cl_v25_6">Улучшен никнейм над игроком</li>
-                                <li data-lang-key="cl_v25_7">Улучшена карта</li>
+<li data-lang-key="cl_v25_3">Improved airdrops</li>
+<li data-lang-key="cl_v25_4">Improved sounds</li>
+<li data-lang-key="cl_v25_5">Improved log console (F8)</li>
+<li data-lang-key="cl_v25_6">Improved nickname above the player</li>
+<li data-lang-key="cl_v25_7">Improved map</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v25_8">Исправления синхронизации в мультиплеере</li>
-                                <li data-lang-key="cl_v25_9">Исправлены частицы крови</li>
+<li data-lang-key="cl_v25_8">Multiplayer sync fixes</li>
+<li data-lang-key="cl_v25_9">Fixed blood particles</li>
                             </ul>
                         </div>
                     </div>
@@ -1034,15 +1040,15 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v242_1">Аирдропы (в разработке)</li>
-                                <li data-lang-key="cl_v242_2">Новый стим: Оранжевый стим (полное восстановление здоровья)</li>
+<li data-lang-key="cl_v242_1">Airdrops (W.I.P.)</li>
+<li data-lang-key="cl_v242_2">New stim: Orange Stim (Full health regen)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v242_3">Крупное обновление графики</li>
-                                <li data-lang-key="cl_v242_4">Небольшие улучшения ИИ</li>
+<li data-lang-key="cl_v242_3">Major graphics update</li>
+<li data-lang-key="cl_v242_4">Small AI improvements</li>
                             </ul>
                         </div>
                     </div>
@@ -1050,24 +1056,24 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v241_1">Прицеливание огнестрельным оружием</li>
-                                <li data-lang-key="cl_v241_2">Стакинг предметов</li>
-                                <li data-lang-key="cl_v241_3">Новое холодное оружие: Модифицированное мачете (только крафт)</li>
-                                <li data-lang-key="cl_v241_4">Полоски здоровья</li>
-                                <li data-lang-key="cl_v241_5">Иконка красного стима в инвентаре</li>
+<li data-lang-key="cl_v241_1">Firearms aim</li>
+<li data-lang-key="cl_v241_2">Items stacking</li>
+<li data-lang-key="cl_v241_3">New melee: Modified Machete (craft only)</li>
+<li data-lang-key="cl_v241_4">Healthbars</li>
+<li data-lang-key="cl_v241_5">Red Stim inventory icon</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v241_6">Улучшены анимации оружия</li>
-                                <li data-lang-key="cl_v241_7">Улучшен верстак (крафт)</li>
+<li data-lang-key="cl_v241_6">Improved weapon animations</li>
+<li data-lang-key="cl_v241_7">Improved workbench (crafting)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v241_8">Исправлены проблемы с сундуками</li>
+<li data-lang-key="cl_v241_8">Fixed chests problems</li>
                             </ul>
                         </div>
                     </div>
@@ -1075,29 +1081,29 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v24_1">Ресурсы и крафт (крафт всё ещё в разработке)</li>
-                                <li data-lang-key="cl_v24_2">Взлом замков</li>
-                                <li data-lang-key="cl_v24_3">Ящики</li>
-                                <li data-lang-key="cl_v24_4">Подсказка при получении предмета</li>
-                                <li data-lang-key="cl_v24_5">NPC с добычей</li>
-                                <li data-lang-key="cl_v24_6">Возвращено огнестрельное оружие</li>
+<li data-lang-key="cl_v24_1">Resources & Crafting (crafting is still WIP)</li>
+<li data-lang-key="cl_v24_2">Lockpicking</li>
+<li data-lang-key="cl_v24_3">Crates</li>
+<li data-lang-key="cl_v24_4">Hint when you get item</li>
+<li data-lang-key="cl_v24_5">Lootable NPCs</li>
+<li data-lang-key="cl_v24_6">Readded Firearms</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v24_7">Сохранение инвентаря</li>
-                                <li data-lang-key="cl_v24_8">Сохранение баланса</li>
-                                <li data-lang-key="cl_v24_9">Удалены шкафчики</li>
-                                <li data-lang-key="cl_v24_10">Улучшена карта</li>
-                                <li data-lang-key="cl_v24_11">Улучшено взаимодействие</li>
+<li data-lang-key="cl_v24_7">Inventory saving</li>
+<li data-lang-key="cl_v24_8">Balance saving</li>
+<li data-lang-key="cl_v24_9">Removed Lockers</li>
+<li data-lang-key="cl_v24_10">Improved Map</li>
+<li data-lang-key="cl_v24_11">Improved interaction</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v24_12">Исправлена синхронизация смерти игрока</li>
-                                <li data-lang-key="cl_v24_13">Исправлено зацикливание дневной/ночной музыки</li>
+<li data-lang-key="cl_v24_12">Fixed player death synchronization</li>
+<li data-lang-key="cl_v24_13">Fixed Day/Night music loop</li>
                             </ul>
                         </div>
                     </div>
@@ -1105,28 +1111,28 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v23_1">Магазин возвращён и улучшен</li>
-                                <li data-lang-key="cl_v23_2">NPC-люди могут выполнять силовую атаку</li>
-                                <li data-lang-key="cl_v23_3">Баланс/Деньги (не сохраняется после выхода из комнаты)</li>
-                                <li data-lang-key="cl_v23_4">Новые настройки звука</li>
+<li data-lang-key="cl_v23_1">Re-added & improved shop</li>
+<li data-lang-key="cl_v23_2">Human NPCs can do power attack</li>
+<li data-lang-key="cl_v23_3">Balance/Money (does not saves after you leave the room)</li>
+<li data-lang-key="cl_v23_4">New Audio Settings</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v23_5">Улучшена динамическая музыка</li>
-                                <li data-lang-key="cl_v23_6">Улучшены зомби</li>
-                                <li data-lang-key="cl_v23_7">Улучшена трава</li>
-                                <li data-lang-key="cl_v23_8">Улучшена карта</li>
-                                <li data-lang-key="cl_v23_9">Оптимизация</li>
-                                <li data-lang-key="cl_v23_10">Удалены админ-команды чата</li>
+<li data-lang-key="cl_v23_5">Improved Dynamic Music</li>
+<li data-lang-key="cl_v23_6">Improved Zombies</li>
+<li data-lang-key="cl_v23_7">Improved Grass</li>
+<li data-lang-key="cl_v23_8">Improved Map</li>
+<li data-lang-key="cl_v23_9">Optimization</li>
+<li data-lang-key="cl_v23_10">Removed admin chat commands</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v23_11">Исправлено: NPC не оглушаются после парирования</li>
-                                <li data-lang-key="cl_v23_12">Исправлено: Большой бандит не может атаковать</li>
+<li data-lang-key="cl_v23_11">Fixed NPCs dont stun after parry</li>
+<li data-lang-key="cl_v23_12">Fixed Big Bandit cant attack</li>
                             </ul>
                         </div>
                     </div>
@@ -1134,29 +1140,29 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v22_1">NPC без ИИ</li>
-                                <li data-lang-key="cl_v22_2">Форпост выживших</li>
-                                <li data-lang-key="cl_v22_3">Возможность отключить музыку главного меню Infinitarium: Sandbox в настройках</li>
-                                <li data-lang-key="cl_v22_4">Возможность отрубать конечности NPC</li>
-                                <li data-lang-key="cl_v22_5">Режим кампании (тест)</li>
+<li data-lang-key="cl_v22_1">No AI NPCs</li>
+<li data-lang-key="cl_v22_2">Survivor Outpost</li>
+<li data-lang-key="cl_v22_3">Toggleable Infinitarium: Sandbox Main Menu music in settings</li>
+<li data-lang-key="cl_v22_4">Ability to cut off NPCS limbs</li>
+<li data-lang-key="cl_v22_5">Campaign mode (Test)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v22_6">Улучшен удар ногой (dropkick)</li>
-                                <li data-lang-key="cl_v22_7">Упрощено вступление</li>
-                                <li data-lang-key="cl_v22_8">Локация Testing переименована в The Grounds</li>
-                                <li data-lang-key="cl_v22_9">Локация Testing2 переименована в Testing</li>
-                                <li data-lang-key="cl_v22_10">Зомби теперь стонут постоянно</li>
-                                <li data-lang-key="cl_v22_11">Улучшен форпост бандитов</li>
-                                <li data-lang-key="cl_v22_12">Улучшен выбор региона</li>
+<li data-lang-key="cl_v22_6">Improved Dropkick</li>
+<li data-lang-key="cl_v22_7">Simplified intro</li>
+<li data-lang-key="cl_v22_8">Renamed location Testing to The Grounds</li>
+<li data-lang-key="cl_v22_9">Renamed location Testing2 to Testing</li>
+<li data-lang-key="cl_v22_10">Zombies groaning everytime</li>
+<li data-lang-key="cl_v22_11">Improved Bandit Outpost</li>
+<li data-lang-key="cl_v22_12">Improved region picker</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v22_13">Исправлен текст часов</li>
+<li data-lang-key="cl_v22_13">Fixed Watch text</li>
                             </ul>
                         </div>
                     </div>
@@ -1164,16 +1170,16 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v213_1">Анимация бега игрока</li>
-                                <li data-lang-key="cl_v213_2">Урон от падения</li>
+<li data-lang-key="cl_v213_1">Player run animation</li>
+<li data-lang-key="cl_v213_2">Fall Damage</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v213_3">Небольшие улучшения ИИ</li>
-                                <li data-lang-key="cl_v213_4">Небольшие улучшения анимации ножа</li>
-                                <li data-lang-key="cl_v213_5">Навыки прокачки от заражения</li>
+<li data-lang-key="cl_v213_3">Small AI Improvements</li>
+<li data-lang-key="cl_v213_4">Small Knife animation improvements</li>
+<li data-lang-key="cl_v213_5">Infection Upgrade Skills</li>
                             </ul>
                         </div>
                     </div>
@@ -1181,18 +1187,18 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v212_1">Убежища (нет заражения, но PVP включён)</li>
-                                <li data-lang-key="cl_v212_2">Улучшена синхронизация инвентаря</li>
-                                <li data-lang-key="cl_v212_3">Дерево навыков</li>
+<li data-lang-key="cl_v212_1">Shelters (no infection but PVP enabled)</li>
+<li data-lang-key="cl_v212_2">Improved inventory sync</li>
+<li data-lang-key="cl_v212_3">Skills Tree</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v212_4">Улучшены анимации оружия</li>
-                                <li data-lang-key="cl_v212_5">Улучшена динамическая музыка</li>
-                                <li data-lang-key="cl_v212_6">Улучшена карта</li>
-                                <li data-lang-key="cl_v212_7">Масштабирование карты</li>
+<li data-lang-key="cl_v212_4">Improved weapon animations</li>
+<li data-lang-key="cl_v212_5">Improved Dynamic Music</li>
+<li data-lang-key="cl_v212_6">Improved map</li>
+<li data-lang-key="cl_v212_7">Map zoom</li>
                             </ul>
                         </div>
                     </div>
@@ -1200,15 +1206,15 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v211_1">Отмена силовой атаки (ПКМ при зажатой ЛКМ)</li>
+<li data-lang-key="cl_v211_1">Power attack cancel (press RMB when holding LMB)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v211_2">Улучшены анимации оружия</li>
-                                <li data-lang-key="cl_v211_3">Улучшена динамическая музыка</li>
-                                <li data-lang-key="cl_v211_4">Масштабирование карты</li>
+<li data-lang-key="cl_v211_2">Improved weapon animations</li>
+<li data-lang-key="cl_v211_3">Improved Dynamic Music</li>
+<li data-lang-key="cl_v211_4">Map zoom</li>
                             </ul>
                         </div>
                     </div>
@@ -1216,23 +1222,23 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v21_1">Подсказки</li>
-                                <li data-lang-key="cl_v21_2">Добавлен звук окружения</li>
-                                <li data-lang-key="cl_v21_3">Прогресс заражения игрока</li>
-                                <li data-lang-key="cl_v21_4">Улучшена смерть и экран смерти</li>
-                                <li data-lang-key="cl_v21_5">Добавлена карта (в инвентаре)</li>
-                                <li data-lang-key="cl_v21_6">Рэгдолл игрока</li>
-                                <li data-lang-key="cl_v21_7">Вступление (не завершено)</li>
+<li data-lang-key="cl_v21_1">Hints</li>
+<li data-lang-key="cl_v21_2">Added ambient sound</li>
+<li data-lang-key="cl_v21_3">Player's progress of infection</li>
+<li data-lang-key="cl_v21_4">Death Improvement & Death screen</li>
+<li data-lang-key="cl_v21_5">Added map (in the inventory)</li>
+<li data-lang-key="cl_v21_6">Player ragdoll</li>
+<li data-lang-key="cl_v21_7">Intro (UNFINISHED)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v21_8">Улучшены часы (работают с любым оружием)</li>
-                                <li data-lang-key="cl_v21_9">Больше анимаций интерфейса</li>
-                                <li data-lang-key="cl_v21_10">Улучшение цикла дня и ночи</li>
-                                <li data-lang-key="cl_v21_11">Небольшие дополнения меню</li>
-                                <li data-lang-key="cl_v21_12">Небольшие дополнения карты</li>
+<li data-lang-key="cl_v21_8">Improved Watch (works on every weapon)</li>
+<li data-lang-key="cl_v21_9">More UI Animations</li>
+<li data-lang-key="cl_v21_10">Day Night cycle improvement</li>
+<li data-lang-key="cl_v21_11">Small menu additions</li>
+<li data-lang-key="cl_v21_12">Small map additions</li>
                             </ul>
                         </div>
                     </div>
@@ -1240,44 +1246,44 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v20_1">Новое оружие: Трубный ключ, Копьё</li>
-                                <li data-lang-key="cl_v20_2">Новое огнестрельное оружие: Glock 19, M1911, Desert Eagle, AK-47</li>
-                                <li data-lang-key="cl_v20_3">Динамическая музыка (в разработке, можно отключить)</li>
-                                <li data-lang-key="cl_v20_4">Новые локации: Testing2, Гавань</li>
-                                <li data-lang-key="cl_v20_5">Анимация бега с оружием</li>
-                                <li data-lang-key="cl_v20_6">Лестницы</li>
+<li data-lang-key="cl_v20_1">New Weapons: Pipe Wrench, Spear</li>
+<li data-lang-key="cl_v20_2">New Firearms: Glock 19, M1911, Desert Eagle, AK-47</li>
+<li data-lang-key="cl_v20_3">Dynamic Music (WIP, Toggleable)</li>
+<li data-lang-key="cl_v20_4">New locations: Testing2, Harbour</li>
+<li data-lang-key="cl_v20_5">Weapons run animation</li>
+<li data-lang-key="cl_v20_6">Ladders</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v20_7">Поддержка DirectX 12 и Vulkan (по умолчанию: Vulkan)</li>
-                                <li data-lang-key="cl_v20_8">Улучшение анимаций оружия</li>
-                                <li data-lang-key="cl_v20_9">Новая система хитбоксов</li>
-                                <li data-lang-key="cl_v20_10">Новая система инвентаря</li>
-                                <li data-lang-key="cl_v20_11">Улучшена система огнестрельного оружия</li>
-                                <li data-lang-key="cl_v20_12">Улучшена карта</li>
-                                <li data-lang-key="cl_v20_13">Улучшено меню паузы</li>
-                                <li data-lang-key="cl_v20_14">Улучшен HUD</li>
-                                <li data-lang-key="cl_v20_15">Улучшен фон меню</li>
+<li data-lang-key="cl_v20_7">DirectX 12 & Vulkan support (Standart: Vulkan)</li>
+<li data-lang-key="cl_v20_8">Weapons Animations Improvement</li>
+<li data-lang-key="cl_v20_9">New Hitbox System</li>
+<li data-lang-key="cl_v20_10">New Inventory System</li>
+<li data-lang-key="cl_v20_11">Improved Firearms system</li>
+<li data-lang-key="cl_v20_12">Improved map</li>
+<li data-lang-key="cl_v20_13">Improved pause menu</li>
+<li data-lang-key="cl_v20_14">Improved HUD</li>
+<li data-lang-key="cl_v20_15">Improved Menu Background</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v20_16">Исправлено: прочность оружия отображалась другим игрокам</li>
+<li data-lang-key="cl_v20_16">Fixed weapon durability was showing to other players</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="patches">Patches:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v20_17">Рэгдоллы NPC (только при нокауте)</li>
-                                <li data-lang-key="cl_v20_18">Улучшения карты (стены, радиовышка, база бандитов)</li>
-                                <li data-lang-key="cl_v20_19">Улучшение интерфейса меню</li>
-                                <li data-lang-key="cl_v20_20">Новый эффект блика линзы<br></li>
-                                <li data-lang-key="cl_v20_21">Небольшое улучшение ИИ</li>
-                                <li data-lang-key="cl_v20_22">Улучшение графики<br></li>
-                                <li data-lang-key="cl_v20_23">Исправлено множество ошибок, связанных с NPC</li>
+<li data-lang-key="cl_v20_17">NPC Ragdolls (knockout only)</li>
+<li data-lang-key="cl_v20_18">Map improvements (walls, radio-tower, bandits base)</li>
+<li data-lang-key="cl_v20_19">Menu UI Improvement</li>
+<li data-lang-key="cl_v20_20">New lens flare<br></li>
+<li data-lang-key="cl_v20_21">Small AI Improvement</li>
+<li data-lang-key="cl_v20_22">Graphics improvement<br></li>
+<li data-lang-key="cl_v20_23">Fixed a lot of bugs related to npcs</li>
                             </ul>
                         </div>
                     </div>
@@ -1285,24 +1291,24 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v19_1">Новое оружие</li>
-                                <li data-lang-key="cl_v19_2">Включение/выключение снега</li>
+<li data-lang-key="cl_v19_1">New Weapons</li>
+<li data-lang-key="cl_v19_2">Snow toggling</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v19_3">Внутриигровые события администратора</li>
-                                <li data-lang-key="cl_v19_4">Ребаланс прочности оружия</li>
-                                <li data-lang-key="cl_v19_5">Улучшение анимаций оружия</li>
+<li data-lang-key="cl_v19_3">Admin in-game events</li>
+<li data-lang-key="cl_v19_4">Rebalance of weapons durability</li>
+<li data-lang-key="cl_v19_5">Weapon animations improvement</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v19_6">Исправлены шкафчики...</li>
-                                <li data-lang-key="cl_v19_7">Исправлено поднятие оружия</li>
-                                <li data-lang-key="cl_v19_8">Исправлена синхронизация оружия в инвентаре</li>
+<li data-lang-key="cl_v19_6">Fixed lockers...</li>
+<li data-lang-key="cl_v19_7">Fixed weapon picking up</li>
+<li data-lang-key="cl_v19_8">Fixed weapon inventory sync</li>
                             </ul>
                         </div>
                     </div>
@@ -1310,27 +1316,27 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v18_1">Эффекты урона</li>
-                                <li data-lang-key="cl_v18_2">Кастомный курсор</li>
-                                <li data-lang-key="cl_v18_3">Возможность сбивать игроков ударом ногой</li>
+<li data-lang-key="cl_v18_1">Damage effects</li>
+<li data-lang-key="cl_v18_2">Custom cursor</li>
+<li data-lang-key="cl_v18_3">Ability to knock players with dropkick</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v18_4">Улучшена смерть</li>
-                                <li data-lang-key="cl_v18_5">Плавное перемещение игрока</li>
-                                <li data-lang-key="cl_v18_6">Улучшение графики</li>
-                                <li data-lang-key="cl_v18_7">Улучшен спавнер NPC</li>
-                                <li data-lang-key="cl_v18_8">Улучшено удержание оружия</li>
-                                <li data-lang-key="cl_v18_9">Улучшено главное меню</li>
-                                <li data-lang-key="cl_v18_10">Улучшена карта</li>
+<li data-lang-key="cl_v18_4">Death improvement</li>
+<li data-lang-key="cl_v18_5">Smooth Player movement</li>
+<li data-lang-key="cl_v18_6">Graphics improvement</li>
+<li data-lang-key="cl_v18_7">Improved NPC Spawner</li>
+<li data-lang-key="cl_v18_8">Improved weapon holding</li>
+<li data-lang-key="cl_v18_9">Improved main menu</li>
+<li data-lang-key="cl_v18_10">Improved map</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v18_11">Исправлены прыжки на стенах</li>
+<li data-lang-key="cl_v18_11">Fixed jumping on the walls</li>
                             </ul>
                         </div>
                     </div>
@@ -1338,26 +1344,26 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v17_1">Частицы крови</li>
-                                <li data-lang-key="cl_v17_2">Новая команда чата: /summon</li>
-                                <li data-lang-key="cl_v17_3">Discord Rich Presence</li>
-                                <li data-lang-key="cl_v17_4">Бандиты появляются на карте каждые 2 минуты</li>
-                                <li data-lang-key="cl_v17_5">Добавлены шкафчики с оружием</li>
+<li data-lang-key="cl_v17_1">Blood particles</li>
+<li data-lang-key="cl_v17_2">New chat command: /summon</li>
+<li data-lang-key="cl_v17_3">Discord Rich Presence</li>
+<li data-lang-key="cl_v17_4">Bandits spawning on the map every 2 minutes</li>
+<li data-lang-key="cl_v17_5">Added Lockers with weapons</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v17_6">Удалена система магазина</li>
-                                <li data-lang-key="cl_v17_7">Небольшое улучшение настроек</li>
-                                <li data-lang-key="cl_v17_8">Улучшено поднятие оружия</li>
-                                <li data-lang-key="cl_v17_9">Улучшены анимации оружия</li>
+<li data-lang-key="cl_v17_6">Removed Shop System</li>
+<li data-lang-key="cl_v17_7">Small Settings Improvement</li>
+<li data-lang-key="cl_v17_8">Improved Weapon picking up</li>
+<li data-lang-key="cl_v17_9">Improved Weapon animations</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v17_10">Исправлена чувствительность</li>
+<li data-lang-key="cl_v17_10">Fixed sensitivity</li>
                             </ul>
                         </div>
                     </div>
@@ -1365,19 +1371,19 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v16_1">Добавлен фонарик</li>
-                                <li data-lang-key="cl_v16_2">Добавлены анимации доставания/поднятия для некоторого оружия</li>
+<li data-lang-key="cl_v16_1">Added flashlight</li>
+<li data-lang-key="cl_v16_2">Added deploy/pickup animations for some weapons</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v16_3">Улучшена система хитбоксов</li>
-                                <li data-lang-key="cl_v16_4">Все кнопки в меню теперь полностью интерактивны</li>
-                                <li data-lang-key="cl_v16_5">Расширена карта</li>
-                                <li data-lang-key="cl_v16_6">Небольшое улучшение анимаций оружия</li>
-                                <li data-lang-key="cl_v16_7">Новые эффекты наклона камеры</li>
-                                <li data-lang-key="cl_v16_8">Удалён эффект снега</li>
+<li data-lang-key="cl_v16_3">Improved hitbox system</li>
+<li data-lang-key="cl_v16_4">All buttons in menu are now fully interactive</li>
+<li data-lang-key="cl_v16_5">Expanded map</li>
+<li data-lang-key="cl_v16_6">Small weapon animations improvement</li>
+<li data-lang-key="cl_v16_7">New camera tilt effects</li>
+<li data-lang-key="cl_v16_8">Removed snow effect</li>
                             </ul>
                         </div>
                     </div>
@@ -1385,22 +1391,22 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v151_1">Добавлены крупные здания на карту</li>
-                                <li data-lang-key="cl_v151_2">Добавлен тип NPC «Заражённый»</li>
-                                <li data-lang-key="cl_v151_3">Добавлена проверка версии</li>
+<li data-lang-key="cl_v151_1">Added large buildings to the map</li>
+<li data-lang-key="cl_v151_2">Implemented Infected NPC type</li>
+<li data-lang-key="cl_v151_3">Added version checker</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v151_4">Небольшие улучшения карты</li>
-                                <li data-lang-key="cl_v151_5">Удалён режим рэгдолла</li>
+<li data-lang-key="cl_v151_4">Small map improvements</li>
+<li data-lang-key="cl_v151_5">Removed ragdoll mode</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v151_6">Исправлен ползунок FOV, некорректно применявший изменения</li>
+<li data-lang-key="cl_v151_6">Fixed FOV slider not applying changes properly</li>
                             </ul>
                         </div>
                     </div>
@@ -1408,25 +1414,25 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v15_1">Добавлена система внутриигрового меню</li>
-                                <li data-lang-key="cl_v15_2">Добавлена физика рэгдолла игрока (в разработке)</li>
-                                <li data-lang-key="cl_v15_3">Добавлен вид тела от первого лица</li>
+<li data-lang-key="cl_v15_1">Added in-game menu system</li>
+<li data-lang-key="cl_v15_2">Implemented player ragdoll physics (Work in Progress)</li>
+<li data-lang-key="cl_v15_3">Added first-person body view</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v15_4">Переработка карты</li>
-                                <li data-lang-key="cl_v15_5">Улучшен функционал магазина</li>
-                                <li data-lang-key="cl_v15_6">Переработаны анимации удара ногой и dropkick</li>
-                                <li data-lang-key="cl_v15_7">Улучшены модели оружия от первого лица и обращение с ним</li>
+<li data-lang-key="cl_v15_4">Map revamp</li>
+<li data-lang-key="cl_v15_5">Enhanced shop functionality</li>
+<li data-lang-key="cl_v15_6">Overhauled kick and dropkick animations</li>
+<li data-lang-key="cl_v15_7">Improved weapon view models and handling</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v15_8">Исправлена выдача оружия при заполненном инвентаре</li>
-                                <li data-lang-key="cl_v15_9">Исправлен баг с невидимым курсором в главном меню</li>
+<li data-lang-key="cl_v15_8">Fixed weapon giving with full inventory issue</li>
+<li data-lang-key="cl_v15_9">Fixed invisible cursor bug in main menu</li>
                             </ul>
                         </div>
                     </div>
@@ -1434,24 +1440,24 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v141_1">Добавлена система прочности оружия</li>
-                                <li data-lang-key="cl_v141_2">Добавлена механика выбрасывания оружия</li>
-                                <li data-lang-key="cl_v141_3">Добавлен внутриигровой магазин для покупки снаряжения</li>
+<li data-lang-key="cl_v141_1">Added weapon durability system</li>
+<li data-lang-key="cl_v141_2">Implemented weapon dropping mechanics</li>
+<li data-lang-key="cl_v141_3">Added in-game shop for purchasing equipment</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v141_4">Переработана система управления выносливостью</li>
-                                <li data-lang-key="cl_v141_5">Доработана физика dropkick и регистрация попаданий</li>
-                                <li data-lang-key="cl_v141_6">Улучшена миникарта</li>
-                                <li data-lang-key="cl_v141_7">Улучшено общее визуальное качество</li>
+<li data-lang-key="cl_v141_4">Overhauled stamina management system</li>
+<li data-lang-key="cl_v141_5">Refined dropkick physics and hit detection</li>
+<li data-lang-key="cl_v141_6">Enhanced minimap</li>
+<li data-lang-key="cl_v141_7">Improved overall visual quality</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v141_8">Исправлена работа команды /allowGive</li>
+<li data-lang-key="cl_v141_8">Fixed /allowGive command functionality</li>
                             </ul>
                         </div>
                     </div>
@@ -1459,16 +1465,16 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v14_1">Выбор региона для выбора сервера</li>
-                                <li data-lang-key="cl_v14_2">Список серверов с отображением пинга</li>
-                                <li data-lang-key="cl_v14_3">Новое огнестрельное оружие: Пистолет (путь: Firearms/Pistol)</li>
-                                <li data-lang-key="cl_v14_4">Эффект снежной погоды</li>
+<li data-lang-key="cl_v14_1">Region picker for server selection</li>
+<li data-lang-key="cl_v14_2">Server browser with ping display</li>
+<li data-lang-key="cl_v14_3">New firearm weapon: Pistol (path: Firearms/Pistol)</li>
+<li data-lang-key="cl_v14_4">Snow weather effect</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v14_5">Исправлены постоянные проблемы с подключением</li>
+<li data-lang-key="cl_v14_5">Fixed persistent connection problems</li>
                             </ul>
                         </div>
                     </div>
@@ -1476,15 +1482,15 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v131_1">Добавлено новое оружие: Лом, Тесак, Нож, Молоток, Кастет, Бейсбольная бита,</li>
-                                <li data-lang-key="cl_v131_2">Телескопическая дубинка, Кувалда</li>
+<li data-lang-key="cl_v131_1">Added new weapons: Crowbar, Cleaver, Knife, Hammer, Brass Knuckles, Baseball Bat,</li>
+<li data-lang-key="cl_v131_2">Telescopic Baton, Sledgehammer</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v131_3">Переработаны модель и анимации мачете</li>
-                                <li data-lang-key="cl_v131_4">NPC теперь могут блокировать атаки игрока</li>
+<li data-lang-key="cl_v131_3">Reworked machete model and animations</li>
+<li data-lang-key="cl_v131_4">NPCs can now block player attacks</li>
                             </ul>
                         </div>
                     </div>
@@ -1492,27 +1498,27 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v13_1">Добавлена механика оглушения NPC (идеальный блок/парирование)</li>
-                                <li data-lang-key="cl_v13_2">Система смены дня и ночи</li>
-                                <li data-lang-key="cl_v13_3">Добавлены новые команды чата для мультиплеера</li>
-                                <li data-lang-key="cl_v13_4">Обновлена иконка игры</li>
+<li data-lang-key="cl_v13_1">Added NPC stunning mechanic (Perfect Block/Parry)</li>
+<li data-lang-key="cl_v13_2">Day Night Cycle system</li>
+<li data-lang-key="cl_v13_3">Added new chat commands for multiplayer</li>
+<li data-lang-key="cl_v13_4">Updated game icon</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v13_5">Крупный редизайн карты</li>
-                                <li data-lang-key="cl_v13_6">Улучшен ИИ NPC</li>
-                                <li data-lang-key="cl_v13_7">Улучшены механика и анимации dropkick</li>
-                                <li data-lang-key="cl_v13_8">Добавлено покачивание оружия для погружения</li>
-                                <li data-lang-key="cl_v13_9">Добавлен наклон камеры при атаках</li>
-                                <li data-lang-key="cl_v13_10">Добавлена задержка действия после силовых атак</li>
+<li data-lang-key="cl_v13_5">Major map redesign</li>
+<li data-lang-key="cl_v13_6">Enhanced NPCs AI</li>
+<li data-lang-key="cl_v13_7">Improved dropkick mechanics and animations</li>
+<li data-lang-key="cl_v13_8">Added weapon sway effect for immersion</li>
+<li data-lang-key="cl_v13_9">Implemented camera tilt on attacks</li>
+<li data-lang-key="cl_v13_10">Added action delay after power attacks</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v13_11">Исправлены проблемы отрисовки HUD</li>
+<li data-lang-key="cl_v13_11">Fixed HUD rendering issues</li>
                             </ul>
                         </div>
                     </div>
@@ -1520,18 +1526,18 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v121_1">Добавлено меню настроек игры</li>
-                                <li data-lang-key="cl_v121_2">Добавлена миникарта</li>
-                                <li data-lang-key="cl_v121_3">Добавлены визуальные и звуковые эффекты низкого здоровья</li>
-                                <li data-lang-key="cl_v121_4">Добавлена возможность блокировать атаки NPC</li>
-                                <li data-lang-key="cl_v121_5">Добавлены кастомные звуки для NPC</li>
+<li data-lang-key="cl_v121_1">Added game settings menu</li>
+<li data-lang-key="cl_v121_2">Added minimap</li>
+<li data-lang-key="cl_v121_3">Added VFX & SFX for low health</li>
+<li data-lang-key="cl_v121_4">Implemented ability to block NPC attacks</li>
+<li data-lang-key="cl_v121_5">Added custom sounds for NPCs</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v121_6">Улучшена видимость прицела</li>
-                                <li data-lang-key="cl_v121_7">Доработана система управления выносливостью</li>
+<li data-lang-key="cl_v121_6">Improved crosshair visibility</li>
+<li data-lang-key="cl_v121_7">Refined stamina management system</li>
                             </ul>
                         </div>
                     </div>
@@ -1539,24 +1545,24 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v12_1">Добавлено оружие мачете</li>
-                                <li data-lang-key="cl_v12_2">Добавлены звуковые эффекты боя</li>
-                                <li data-lang-key="cl_v12_3">Добавлена способность блокировать (в разработке)</li>
-                                <li data-lang-key="cl_v12_4">Добавлена способность силовой атаки</li>
-                                <li data-lang-key="cl_v12_5">Добавлена система выносливости (в разработке)</li>
+<li data-lang-key="cl_v12_1">Added machete weapon</li>
+<li data-lang-key="cl_v12_2">Added combat sound effects</li>
+<li data-lang-key="cl_v12_3">Added block ability (Work in Progress)</li>
+<li data-lang-key="cl_v12_4">Added power attack ability</li>
+<li data-lang-key="cl_v12_5">Added stamina system (W.I.P.)</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="improvements">Improvements:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v12_6">Улучшен дизайн карты</li>
-                                <li data-lang-key="cl_v12_7">Улучшен интерфейс главного меню</li>
+<li data-lang-key="cl_v12_6">Improved map design</li>
+<li data-lang-key="cl_v12_7">Improved main menu UI</li>
                             </ul>
                         </div>
                         <div class="changelog-section">
                             <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
                             <ul class="changelog-list">
-                                <li data-lang-key="cl_v12_8">Исправлены проблемы подключения между игроками</li>
+<li data-lang-key="cl_v12_8">Fixed connection problems between players</li>
                             </ul>
                         </div>
                     </div>
@@ -1600,8 +1606,15 @@
         bug_fixes: "Исправления ошибок:",
         patches: "Патчи:",
         nothing_here: "Здесь пока ничего нет...",
-        cl_v27_1: "Полный редизайн карты",
-        cl_v27_2: "Улучшен фон меню",
+        cl_v27_1: "Добавлен присяд",
+        cl_v27_2: "Добавлен слайд",
+        cl_v27_3: "Добавлен звук безопасного переката",
+        cl_v27_4: "Полный редизайн карты",
+        cl_v27_5: "Улучшен фон меню",
+        cl_v27_6: "Улучшение звуков ходьбы",
+        cl_v27_7: "IL2CPP сменен на CoreCLR",
+        cl_v27_8: "Улучшен переход между локациями",
+        cl_v27_9: "Здесь пока ничего нет...",
         cl_v264_1: "Добавлена кнопка переподключения",
         cl_v264_2: "Авторизация через PlayFab",
         cl_v264_3: "Система кровотечения (TAB)",
@@ -1863,8 +1876,15 @@
         bug_fixes: "Bug Fixes:",
         patches: "Patches:",
         nothing_here: "Nothing here yet...",
-        cl_v27_1: "Full map rework",
-        cl_v27_2: "Improved Menu Background",
+        cl_v27_1: "Added Crouch",
+        cl_v27_2: "Added Slide",
+        cl_v27_3: "Added safe roll sound",
+        cl_v27_4: "Full map rework",
+        cl_v27_5: "Improved Menu Background",
+        cl_v27_6: "Footstep sounds improvement",
+        cl_v27_7: "Replaced IL2CPP with CoreCLR",
+        cl_v27_8: "Improved transitions between locations",
+        cl_v27_9: "Nothing here yet...",
         cl_v264_1: "Added reconnect button",
         cl_v264_2: "PlayFab Authentication",
         cl_v264_3: "Bleeding System (TAB)",
