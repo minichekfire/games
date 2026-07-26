@@ -1,7 +1,7 @@
 ﻿<Window x:Class="InfinitariumManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Infinitarium Changelog Manager" Height="700" Width="1000"
+        Title="The Late Light — Changelog Manager" Height="760" Width="1180"
         Background="#0b0b0f" Foreground="#f0f0f0" FontFamily="Consolas">
 
     <Window.Resources>
@@ -83,13 +83,13 @@
                             </DataTemplate>
                         </GroupBox.HeaderTemplate>
                         <StackPanel Margin="5">
-                            <TextBlock Text="ID (например: v2.6)" Foreground="#aaa" Margin="0,0,0,5"/>
+                            <TextBlock Text="ID (например: v2.8)" Foreground="#aaa" Margin="0,0,0,5"/>
                             <TextBox x:Name="TxtId" />
 
-                            <TextBlock Text="Название кнопки" Foreground="#aaa" Margin="0,10,0,5"/>
+                            <TextBlock Text="Название кнопки (не переводится, одно на оба языка)" Foreground="#aaa" Margin="0,10,0,5"/>
                             <TextBox x:Name="TxtButtonLabel" />
 
-                            <CheckBox x:Name="ChkUnreleased" Content="Unreleased (Красный стиль)" 
+                            <CheckBox x:Name="ChkUnreleased" Content="Unreleased (Красный стиль вкладки)" 
                                       Foreground="#ff9999" Margin="0,5,0,0"/>
                         </StackPanel>
                     </GroupBox>
@@ -101,7 +101,8 @@
                             </DataTemplate>
                         </GroupBox.HeaderTemplate>
                         <StackPanel>
-                            <TextBlock Text="Добавьте секции (Additions, Improvements...)" Foreground="#666" FontSize="12" Margin="0,0,0,10"/>
+                            <TextBlock Text="Каждая секция требует текст на RU и EN — строки должны соответствовать друг другу по порядку." 
+                                       Foreground="#666" FontSize="12" Margin="0,0,0,10" TextWrapping="Wrap"/>
 
                             <ItemsControl x:Name="ListSections">
                                 <ItemsControl.ItemTemplate>
@@ -114,16 +115,10 @@
                                                         <ColumnDefinition Width="Auto"/>
                                                     </Grid.ColumnDefinitions>
 
-                                                    <ComboBox x:Name="CmbType" 
+                                                    <ComboBox x:Name="CmbType" Grid.Column="0"
                                                               SelectedItem="{Binding Type, Mode=TwoWay}"
                                                               ItemsSource="{Binding DataContext.SectionTypes, RelativeSource={RelativeSource AncestorType=Window}}"
                                                               Margin="0,0,10,0"/>
-
-                                                    <TextBox x:Name="TxtCustomTitle" Grid.Column="0" 
-                                                             Text="{Binding CustomTitle, UpdateSourceTrigger=PropertyChanged}"
-                                                             Visibility="{Binding IsCustomVisible}"
-                                                             Foreground="#ff994d" 
-                                                             Margin="0,0,10,5" />
 
                                                     <Button Grid.Column="1" Content="✕" Click="BtnRemoveSection_Click" 
                                                             Tag="{Binding}" Background="#331111" Foreground="#ff4d4d" 
@@ -131,12 +126,45 @@
                                                             Width="30" Height="30" FontWeight="Bold"/>
                                                 </Grid>
 
-                                                <TextBlock Text="Пункты списка (каждый с новой строки):" Foreground="#888" FontSize="11" Margin="0,10,0,5"/>
+                                                <Grid Visibility="{Binding IsCustomVisible}" Margin="0,10,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Grid.Column="0">
+                                                        <TextBlock Text="Заголовок секции (RU)" Foreground="#888" FontSize="11" Margin="0,0,0,4"/>
+                                                        <TextBox Text="{Binding CustomTitleRu, UpdateSourceTrigger=PropertyChanged}" Foreground="#ff994d"/>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="2">
+                                                        <TextBlock Text="Заголовок секции (EN)" Foreground="#888" FontSize="11" Margin="0,0,0,4"/>
+                                                        <TextBox Text="{Binding CustomTitleEn, UpdateSourceTrigger=PropertyChanged}" Foreground="#ff994d"/>
+                                                    </StackPanel>
+                                                </Grid>
 
-                                                <TextBox x:Name="TxtItems" Text="{Binding ItemsText, UpdateSourceTrigger=PropertyChanged}"
-                                                         AcceptsReturn="True" TextWrapping="Wrap"
-                                                         Height="120" VerticalScrollBarVisibility="Auto"
-                                                         FontFamily="Consolas" FontSize="13"/>
+                                                <Grid Margin="0,10,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Grid.Column="0">
+                                                        <TextBlock Text="Пункты (RU) — каждый с новой строки:" Foreground="#888" FontSize="11" Margin="0,0,0,5"/>
+                                                        <TextBox Text="{Binding ItemsRuText, UpdateSourceTrigger=PropertyChanged}"
+                                                                 AcceptsReturn="True" TextWrapping="Wrap"
+                                                                 Height="120" VerticalScrollBarVisibility="Auto"
+                                                                 FontFamily="Consolas" FontSize="13"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Grid.Column="2">
+                                                        <TextBlock Text="Пункты (EN) — каждый с новой строки:" Foreground="#888" FontSize="11" Margin="0,0,0,5"/>
+                                                        <TextBox Text="{Binding ItemsEnText, UpdateSourceTrigger=PropertyChanged}"
+                                                                 AcceptsReturn="True" TextWrapping="Wrap"
+                                                                 Height="120" VerticalScrollBarVisibility="Auto"
+                                                                 FontFamily="Consolas" FontSize="13"/>
+                                                    </StackPanel>
+                                                </Grid>
                                             </StackPanel>
                                         </Border>
                                     </DataTemplate>
