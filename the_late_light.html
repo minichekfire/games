@@ -577,6 +577,17 @@
             }
 
         /* unreleased / beta-in-dev versions shown red — managed automatically, do not edit manually */
+        .tab-btn[data-tab="v2.7.3"] {
+            color: var(--accent-red-bright);
+            border-color: rgba(194,46,58,0.4);
+        }
+
+            .tab-btn[data-tab="v2.7.3"].active {
+                background: linear-gradient(135deg, var(--accent-red), #7a1b24);
+                color: #fff;
+                border-color: var(--accent-red-bright);
+            }
+
         .tab-btn[data-tab="v2.7.2"] {
             color: var(--accent-red-bright);
             border-color: rgba(194,46,58,0.4);
@@ -868,6 +879,7 @@
             </div>
             <div class="changelog-wrapper">
                 <div class="changelog-tabs">
+                    <button class="tab-btn" data-tab="v2.7.3">v2.7.3 Beta (v17.3)</button>
                     <button class="tab-btn" data-tab="v2.7.2">v2.7.2 Preview Beta (v17.2)</button>
                     <button class="tab-btn" data-tab="v2.7.1">v2.7.1 Preview Beta (v17.1)</button>
                     <button class="tab-btn" data-tab="v2.7">v2.7 Preview Beta (v17)</button>
@@ -901,7 +913,23 @@
                 </div>
 
                 <div class="changelog-content-area">
-                    <div id="v2.7.2" class="tab-content active">
+                    <div id="v2.7.3" class="tab-content active">
+                        <div class="changelog-section">
+                            <h3 data-lang-key="improvements">Improvements:</h3>
+                            <ul class="changelog-list">
+<li data-lang-key="cl_v273_1">Finished map rework</li>
+<li data-lang-key="cl_v273_2">Readded Night Chase System</li>
+<li data-lang-key="cl_v273_3">Full russian localization</li>
+                            </ul>
+                        </div>
+                        <div class="changelog-section">
+                            <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
+                            <ul class="changelog-list">
+<li data-lang-key="cl_v273_4">Fixed a lot of parkour bugs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="v2.7.2" class="tab-content">
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
@@ -1632,6 +1660,10 @@
         bug_fixes: "Исправления ошибок:",
         patches: "Патчи:",
         nothing_here: "Здесь пока ничего нет...",
+        cl_v273_1: "Доделан реворк карты",
+        cl_v273_2: "Передобавлена система ночной погони",
+        cl_v273_3: "Полная русская локализация",
+        cl_v273_4: "Исправлены многочисленные проблемы с паркуром",
         cl_v272_1: "Парирование игроков",
         cl_v272_2: "Анимация урона от падения",
         cl_v272_3: "Оглушение игрока",
@@ -1912,6 +1944,10 @@
         bug_fixes: "Bug Fixes:",
         patches: "Patches:",
         nothing_here: "Nothing here yet...",
+        cl_v273_1: "Finished map rework",
+        cl_v273_2: "Readded Night Chase System",
+        cl_v273_3: "Full russian localization",
+        cl_v273_4: "Fixed a lot of parkour bugs",
         cl_v272_1: "Parrying players",
         cl_v272_2: "Fall Damage Animation",
         cl_v272_3: "Player Stunning",
