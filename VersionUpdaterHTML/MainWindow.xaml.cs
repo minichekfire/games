@@ -458,6 +458,38 @@ namespace InfinitariumManager
             return sb.ToString();
         }
 
+        private void BtnMoveSectionUp_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is ChangelogSection section)
+            {
+                if (ListSections.ItemsSource is ObservableCollection<ChangelogSection> collection)
+                {
+                    int index = collection.IndexOf(section);
+                    if (index > 0)
+                    {
+                        collection.Move(index, index - 1);
+                        ListSections.UpdateLayout();
+                    }
+                }
+            }
+        }
+
+        private void BtnMoveSectionDown_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is ChangelogSection section)
+            {
+                if (ListSections.ItemsSource is ObservableCollection<ChangelogSection> collection)
+                {
+                    int index = collection.IndexOf(section);
+                    if (index < collection.Count - 1)
+                    {
+                        collection.Move(index, index + 1);
+                        ListSections.UpdateLayout();
+                    }
+                }
+            }
+        }
+
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(_filePath)) return;
