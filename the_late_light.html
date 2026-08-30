@@ -576,17 +576,7 @@
                 border-color: var(--blue-glow);
             }
 
-        /* unreleased / beta-in-dev versions shown red — managed automatically, do not edit manually */
-        .tab-btn[data-tab="v3.0"] {
-            color: var(--accent-red-bright);
-            border-color: rgba(194,46,58,0.4);
-        }
-
-            .tab-btn[data-tab="v3.0"].active {
-                background: linear-gradient(135deg, var(--accent-red), #7a1b24);
-                color: #fff;
-                border-color: var(--accent-red-bright);
-            }
+        /* unreleased tabs — managed automatically, do not edit manually */
 
         .changelog-content-area {
             overflow-y: auto;
@@ -931,6 +921,12 @@
 <li data-lang-key="cl_v30_23">Decreased weapons damage</li>
 <li data-lang-key="cl_v30_24">Removed weapons inspect animations</li>
 <li data-lang-key="cl_v30_25">Replaced CoreCLR with IL2CPP</li>
+                            </ul>
+                        </div>
+                        <div class="changelog-section">
+                            <h3 data-lang-key="bug_fixes">Bug Fixes:</h3>
+                            <ul class="changelog-list">
+<li data-lang-key="cl_v30_26">Fixed russian font</li>
                             </ul>
                         </div>
                     </div>
@@ -1710,6 +1706,7 @@
         cl_v30_23: "Уменьшен урон оружий",
         cl_v30_24: "Удалены анимации осмотра оружия",
         cl_v30_25: "CoreCLR сменен на IL2CPP",
+        cl_v30_26: "Исправлен шрифт текстов на русском",
         cl_v273_1: "Добавлены аксессуары персонажа",
         cl_v273_2: "Добавлено новое оружие: Бита с гвоздями",
         cl_v273_3: "Улучшен интерфейс",
@@ -2023,6 +2020,7 @@
         cl_v30_23: "Decreased weapons damage",
         cl_v30_24: "Removed weapons inspect animations",
         cl_v30_25: "Replaced CoreCLR with IL2CPP",
+        cl_v30_26: "Fixed russian font",
         cl_v273_1: "Added character accessories",
         cl_v273_2: "Added new weapon: Nail Bat",
         cl_v273_3: "Improved UI",
