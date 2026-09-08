@@ -576,7 +576,17 @@
                 border-color: var(--blue-glow);
             }
 
-        /* unreleased tabs — managed automatically, do not edit manually */
+        /* unreleased / beta-in-dev versions shown red — managed automatically, do not edit manually */
+        .tab-btn[data-tab="v3.1"] {
+            color: var(--accent-red-bright);
+            border-color: rgba(194,46,58,0.4);
+        }
+
+            .tab-btn[data-tab="v3.1"].active {
+                background: linear-gradient(135deg, var(--accent-red), #7a1b24);
+                color: #fff;
+                border-color: var(--accent-red-bright);
+            }
 
         .changelog-content-area {
             overflow-y: auto;
@@ -852,6 +862,7 @@
             </div>
             <div class="changelog-wrapper">
                 <div class="changelog-tabs">
+                    <button class="tab-btn" data-tab="v3.1">v3.1 Beta (v21)</button>
                     <button class="tab-btn" data-tab="v3.0">v3.0 Beta (v20)</button>
                     <button class="tab-btn" data-tab="v2.7.3">v2.7.3 Beta (v17.3)</button>
                     <button class="tab-btn" data-tab="v2.7.2">v2.7.2 Preview Beta (v17.2)</button>
@@ -887,7 +898,28 @@
                 </div>
 
                 <div class="changelog-content-area">
-                    <div id="v3.0" class="tab-content active">
+                    <div id="v3.1" class="tab-content active">
+                        <div class="changelog-section">
+                            <h3 data-lang-key="additions">Additions:</h3>
+                            <ul class="changelog-list">
+<li data-lang-key="cl_v31_1">New weapons: SPAS-12, UMP-45</li>
+<li data-lang-key="cl_v31_2">New Achievements</li>
+<li data-lang-key="cl_v31_3">Weapons jump animations</li>
+                            </ul>
+                        </div>
+                        <div class="changelog-section">
+                            <h3 data-lang-key="improvements">Improvements:</h3>
+                            <ul class="changelog-list">
+<li data-lang-key="cl_v31_4">NPCs can parkour</li>
+<li data-lang-key="cl_v31_5">Improved W.I.P. things</li>
+<li data-lang-key="cl_v31_6">Improved Console Logging</li>
+<li data-lang-key="cl_v31_7">Improved tutorial</li>
+<li data-lang-key="cl_v31_8">Replaced combat music</li>
+<li data-lang-key="cl_v31_9">VFX Improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="v3.0" class="tab-content">
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
@@ -1681,6 +1713,15 @@
         bug_fixes: "Исправления ошибок:",
         patches: "Патчи:",
         nothing_here: "Здесь пока ничего нет...",
+        cl_v31_1: "Новые оружия: SPAS-12, UMP-45",
+        cl_v31_2: "Новые достижения",
+        cl_v31_3: "Анимация прыжка у оружий",
+        cl_v31_4: "НПС могут паркурить",
+        cl_v31_5: "Улучшены W.I.P. штуки",
+        cl_v31_6: "Улучшено логирование в консоли",
+        cl_v31_7: "Улучшено обучение",
+        cl_v31_8: "Заменена музыка боя",
+        cl_v31_9: "Улучшение визуальных эффектов",
         cl_v30_1: "(W.I.P.) Случайные события на карте: Аирдроп, Ночное вторжение, Рейд Бандитов",
         cl_v30_2: "(HEAVY W.I.P.) Модификация оружия",
         cl_v30_3: "Биндинг клавиш",
@@ -1995,6 +2036,15 @@
         bug_fixes: "Bug Fixes:",
         patches: "Patches:",
         nothing_here: "Nothing here yet...",
+        cl_v31_1: "New weapons: SPAS-12, UMP-45",
+        cl_v31_2: "New Achievements",
+        cl_v31_3: "Weapons jump animations",
+        cl_v31_4: "NPCs can parkour",
+        cl_v31_5: "Improved W.I.P. things",
+        cl_v31_6: "Improved Console Logging",
+        cl_v31_7: "Improved tutorial",
+        cl_v31_8: "Replaced combat music",
+        cl_v31_9: "VFX Improvement",
         cl_v30_1: "(W.I.P.) Random Events on the map: Airdrop, Night Envasion, Bandit Raid",
         cl_v30_2: "(HEAVY W.I.P.) Weapon Attachments",
         cl_v30_3: "Keybinds customization",
