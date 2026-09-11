@@ -1,0 +1,249 @@
+{
+  "categories": [
+    {
+      "id": "gameplay",
+      "nameRu": "Механики",
+      "nameEn": "Mechanics",
+      "articles": [
+        {
+          "id": "combat",
+          "titleRu": "Ближний бой",
+          "titleEn": "Melee Combat",
+          "contentRu": "<p>Ближний бой — важная часть игры, которая будет использоваться большее количество времени.</p>\r\n\r\n<h2>Типы атак</h2>\r\n<ul>\r\n    <li>Blunt</li>\r\n    <li>Slashing (вызывает кровотечение)</li>\r\n    <li>Piercing (вызывает кровотечение)</li>\r\n</ul>\r\n\r\n<p>С помощью оружия ближнего боя можно блокировать или паррировать удары.</p>",
+          "contentEn": "<p>Melee combat is an important part of the game and will be used for a significant amount of time.</p>\r\n\r\n<h2>Attack Types</h2>\r\n<ul>\r\n    <li>Blunt</li>\r\n    <li>Slashing (causes bleeding)</li>\r\n    <li>Piercing (causes bleeding)</li>\r\n</ul>\r\n\r\n<p>You can block or parry attacks with melee weapons.</p>"
+        },
+        {
+          "id": "parkour",
+          "titleRu": "Паркур",
+          "titleEn": "Parkour",
+          "contentRu": "<p><b>Паркур</b> позволяет забираться на труднодоступные места или возвышенности. При паркуре в основном невозможно использовать оружие.</p>\r\n\r\n<h2>Все паркур действия</h2>\r\n<ul>\r\n    <li><b>Ledge Grab</b> - позволяет схватиться за уступ.</li>\r\n    <li><b>Ledge Climb</b> - позволяет подняться с уступа на поверхность.</li>\r\n    <li><b>Ledge Hop</b> - позволяет перенестись с уступа на уступ выше.</li>\r\n    <li><b>Vault</b> - позволяет перелезть через препятствие.</li>\r\n    <li><b>Slide</b> - позволяет проскользить под препятствием.</li>\r\n</ul>",
+          "contentEn": "<p><b>Parkour</b> allows you to reach inaccessible places or high ground. While performing parkour actions, using weapons is generally impossible.</p>\r\n\r\n<h2>All Parkour Actions</h2>\r\n<ul>\r\n    <li><b>Ledge Grab</b> - allows you to grab onto a ledge.</li>\r\n    <li><b>Ledge Climb</b> - allows you to climb up from a ledge onto a surface.</li>\r\n    <li><b>Ledge Hop</b> - allows you to move from one ledge to a higher one.</li>\r\n    <li><b>Vault</b> - allows you to vault over an obstacle.</li>\r\n    <li><b>Slide</b> - allows you to slide under an obstacle.</li>\r\n</ul>"
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "nameRu": "Мир",
+      "nameEn": "World",
+      "articles": [
+        {
+          "id": "npc",
+          "titleRu": "НИПы",
+          "titleEn": "NPCs",
+          "contentRu": "<p>На карте могут появляться НИПы, в основном - бандиты, выжившие, зомби и ночные охотники.</p>",
+          "contentEn": "<p>NPCs can spawn on the map, generally its bandits, zombies & night hunters.</p>"
+        }
+      ]
+    },
+    {
+      "id": "cd28b374",
+      "nameRu": "НИПы",
+      "nameEn": "NPCs",
+      "articles": [
+        {
+          "id": "44fb3736",
+          "titleRu": "Выживший",
+          "titleEn": "Survivor",
+          "contentRu": "<p>Выживший - дружелюбный НИП, который не атакует игрока, но атакует бандитов и зараженных.</p>\r\n\r\n<p><b>Может появиться с одним из этих оружий:</b></p>\r\n<ul>\r\n    <li>Кулаки</li>\r\n    <li>Мачете</li>\r\n    <li>Длинный меч</li>\r\n    <li>Бита</li>\r\n    <li>Труба</li>\r\n</ul>\r\n\r\n<p>Имеет 100 ХП.</p>",
+          "contentEn": "<p>Survivor - friendly NPC that doesn't attack player but attack bandits & infected.</p>\r\n\r\n<p><b>Can spawn with one of these weapons:</b></p>\r\n<ul>\r\n    <li>Fists</li>\r\n    <li>Machete</li>\r\n    <li>Longsword</li>\r\n    <li>Bat</li>\r\n    <li>Leadpipe</li>\r\n</ul>\r\n\r\n<p>Has 100 HP.</p>"
+        },
+        {
+          "id": "d2867b55",
+          "titleRu": "Бандит",
+          "titleEn": "Bandit",
+          "contentRu": "<p>Бандит - агрессивный НИП, который атакует игрока, выживших и зараженных.</p>\r\n\r\n<p><b>Может появиться с одним из этих оружий:</b></p>\r\n<ul>\r\n    <li>Кулаки</li>\r\n    <li>Мачете</li>\r\n    <li>Длинный меч</li>\r\n    <li>Бита</li>\r\n    <li>Труба</li>\r\n    <li>!machete</li>\r\n</ul>\r\n\r\n<p>Имеет 100 ХП.</p>",
+          "contentEn": "<p>Bandit - aggressive NPC that attacks player, survivors & infected.</p>\r\n\r\n<p><b>Can spawn with one of these weapons:</b></p>\r\n<ul>\r\n    <li>Fists</li>\r\n    <li>Machete</li>\r\n    <li>Longsword</li>\r\n    <li>Bat</li>\r\n    <li>Leadpipe</li>\r\n    <li>!machete</li>\r\n</ul>\r\n\r\n<p>Has 100 HP.</p>"
+        },
+        {
+          "id": "91b6a035",
+          "titleRu": "Зомби",
+          "titleEn": "Zombie",
+          "contentRu": "<p>Зомби - агрессивный/зараженный НИП, который атакует игрока, выживших и бандитов.</p>\r\n<p>Не может появиться с оружием.</p>\r\n\r\n<p>Имеет 100 ХП.</p>",
+          "contentEn": "<p>Zombie - agressive/infected NPC that attacks player, survivors & bandits.</p>\r\n<p>Cannot spawn with weapon.</p>\r\n\r\n<p>Has 100 HP.</p>"
+        },
+        {
+          "id": "585517a2",
+          "titleRu": "Ночной Охотник",
+          "titleEn": "Night Hunter",
+          "contentRu": "<p>Ночной охотник - агрессивный/зараженный НИП, который атакует игрока, выживших и бандитов.</p>\r\n<p>Не может появиться с оружием.</p>\r\n<p>Имеет 590 ХП.</p>",
+          "contentEn": "<p>Night Hunter - agressive/infected NPC that attacks player, survivors & bandits.</p>\r\n<p>Cannot spawn with weapon.</p>\r\n\r\n<p>Has 590 HP.</p>"
+        }
+      ]
+    },
+    {
+      "id": "dd1b2f49",
+      "nameRu": "Оружие",
+      "nameEn": "Weapons",
+      "articles": [
+        {
+          "id": "217f7d63",
+          "titleRu": "Кулаки",
+          "titleEn": "Fists",
+          "contentRu": "<p>Базовое оружие ближнего боя. Наносит тупой урон.</p><ul><li><b>Урон:</b> 6 (13)</li><li><b>Скорость атаки:</b> 1.60</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Basic melee weapon. Deals blunt damage.</p><ul><li><b>Damage:</b> 6 (13)</li><li><b>Attack Rate:</b> 1.60</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_bat",
+          "titleRu": "Бита",
+          "titleEn": "Bat",
+          "contentRu": "<p>Деревянная бита. Наносит тупой урон.</p><ul><li><b>Урон:</b> 12 (18)</li><li><b>Скорость атаки:</b> 1.50</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Wooden bat. Deals blunt damage.</p><ul><li><b>Damage:</b> 12 (18)</li><li><b>Attack Rate:</b> 1.50</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_brass_knuckles",
+          "titleRu": "Кастет",
+          "titleEn": "Brass Knuckles",
+          "contentRu": "<p>Усиливает удары кулаков. Наносит тупой урон.</p><ul><li><b>Урон:</b> 8 (16)</li><li><b>Скорость атаки:</b> 1.60</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Reinforces punches. Deals blunt damage.</p><ul><li><b>Damage:</b> 8 (16)</li><li><b>Attack Rate:</b> 1.60</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_cleaver",
+          "titleRu": "Тесак",
+          "titleEn": "Cleaver",
+          "contentRu": "<p>Тяжелый нож для рубки. Вызывает кровотечение.</p><ul><li><b>Урон:</b> 13 (20)</li><li><b>Скорость атаки:</b> 2.00</li><li><b>Тип:</b> Slashing</li></ul>",
+          "contentEn": "<p>Heavy chopping knife. Causes bleeding.</p><ul><li><b>Damage:</b> 13 (20)</li><li><b>Attack Rate:</b> 2.00</li><li><b>Type:</b> Slashing</li></ul>"
+        },
+        {
+          "id": "w_crowbar",
+          "titleRu": "Монтировка",
+          "titleEn": "Crowbar",
+          "contentRu": "<p>Инструмент, пригодный для боя. Наносит тупой урон.</p><ul><li><b>Урон:</b> 12 (18)</li><li><b>Скорость атаки:</b> 1.50</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Tool suitable for combat. Deals blunt damage.</p><ul><li><b>Damage:</b> 12 (18)</li><li><b>Attack Rate:</b> 1.50</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_fire_axe",
+          "titleRu": "Пожарный топор",
+          "titleEn": "Fire Axe",
+          "contentRu": "<p>Тяжелый топор. Основной урон — режущий, вызывает кровотечение.</p><ul><li><b>Урон:</b> 15 (32)</li><li><b>Скорость атаки:</b> 1.30</li><li><b>Тип:</b> Blunt / Slashing</li></ul>",
+          "contentEn": "<p>Heavy axe. Primary damage is slashing, causes bleeding.</p><ul><li><b>Damage:</b> 15 (32)</li><li><b>Attack Rate:</b> 1.30</li><li><b>Type:</b> Blunt / Slashing</li></ul>"
+        },
+        {
+          "id": "w_hammer",
+          "titleRu": "Молоток",
+          "titleEn": "Hammer",
+          "contentRu": "<p>Строительный инструмент. Наносит тупой урон.</p><ul><li><b>Урон:</b> 15 (23)</li><li><b>Скорость атаки:</b> 1.60</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Construction tool. Deals blunt damage.</p><ul><li><b>Damage:</b> 15 (23)</li><li><b>Attack Rate:</b> 1.60</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_knife",
+          "titleRu": "Нож",
+          "titleEn": "Knife",
+          "contentRu": "<p>Быстрое колющее оружие. Вызывает кровотечение.</p><ul><li><b>Урон:</b> 8 (20)</li><li><b>Скорость атаки:</b> 2.20</li><li><b>Тип:</b> Piercing</li></ul>",
+          "contentEn": "<p>Fast piercing weapon. Causes bleeding.</p><ul><li><b>Damage:</b> 8 (20)</li><li><b>Attack Rate:</b> 2.20</li><li><b>Type:</b> Piercing</li></ul>"
+        },
+        {
+          "id": "w_leadpipe",
+          "titleRu": "Труба",
+          "titleEn": "Leadpipe",
+          "contentRu": "<p>Свинцовая труба. Наносит тупой урон.</p><ul><li><b>Урон:</b> 13 (20)</li><li><b>Скорость атаки:</b> 1.50</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Lead pipe. Deals blunt damage.</p><ul><li><b>Damage:</b> 13 (20)</li><li><b>Attack Rate:</b> 1.50</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_longsword",
+          "titleRu": "Длинный меч",
+          "titleEn": "Longsword",
+          "contentRu": "<p>Длинный клинок с высоким уроном. Вызывает кровотечение.</p><ul><li><b>Урон:</b> 19 (29)</li><li><b>Скорость атаки:</b> 1.10</li><li><b>Тип:</b> Slashing</li></ul>",
+          "contentEn": "<p>Long blade with high damage. Causes bleeding.</p><ul><li><b>Damage:</b> 19 (29)</li><li><b>Attack Rate:</b> 1.10</li><li><b>Type:</b> Slashing</li></ul>"
+        },
+        {
+          "id": "w_machete",
+          "titleRu": "Мачете",
+          "titleEn": "Machete",
+          "contentRu": "<p>Широкий клинок. Вызывает кровотечение.</p><ul><li><b>Урон:</b> 15 (23)</li><li><b>Скорость атаки:</b> 1.66</li><li><b>Тип:</b> Slashing</li></ul>",
+          "contentEn": "<p>Wide blade. Causes bleeding.</p><ul><li><b>Damage:</b> 15 (23)</li><li><b>Attack Rate:</b> 1.66</li><li><b>Type:</b> Slashing</li></ul>"
+        },
+        {
+          "id": "w_modified_machete",
+          "titleRu": "Модифицированное мачете",
+          "titleEn": "Modified Machete",
+          "contentRu": "<p>Улучшенное мачете. Повышенный урон и скорость. Вызывает кровотечение.</p><ul><li><b>Урон:</b> 17 (26)</li><li><b>Скорость атаки:</b> 2.00</li><li><b>Тип:</b> Slashing</li></ul>",
+          "contentEn": "<p>Upgraded machete. Increased damage and speed. Causes bleeding.</p><ul><li><b>Damage:</b> 17 (26)</li><li><b>Attack Rate:</b> 2.00</li><li><b>Type:</b> Slashing</li></ul>"
+        },
+        {
+          "id": "w_nail_bat",
+          "titleRu": "Бита с гвоздями",
+          "titleEn": "Nail Bat",
+          "contentRu": "<p>Бита с вбитыми гвоздями. Колющий урон, вызывает кровотечение.</p><ul><li><b>Урон:</b> 14 (22)</li><li><b>Скорость атаки:</b> 1.40</li><li><b>Тип:</b> Piercing</li></ul>",
+          "contentEn": "<p>Bat with nails driven in. Piercing damage, causes bleeding.</p><ul><li><b>Damage:</b> 14 (22)</li><li><b>Attack Rate:</b> 1.40</li><li><b>Type:</b> Piercing</li></ul>"
+        },
+        {
+          "id": "w_pipe_wrench",
+          "titleRu": "Газовый ключ",
+          "titleEn": "Pipe Wrench",
+          "contentRu": "<p>Тяжелый инструмент. Наносит тупой урон.</p><ul><li><b>Урон:</b> 14 (21)</li><li><b>Скорость атаки:</b> 1.25</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Heavy tool. Deals blunt damage.</p><ul><li><b>Damage:</b> 14 (21)</li><li><b>Attack Rate:</b> 1.25</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_sledgehammer",
+          "titleRu": "Кувалда",
+          "titleEn": "Sledgehammer",
+          "contentRu": "<p>Очень тяжелое оружие. Максимальный тупой урон среди стандартного оружия.</p><ul><li><b>Урон:</b> 19 (40)</li><li><b>Скорость атаки:</b> 1.30</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Very heavy weapon. Highest blunt damage among standard weapons.</p><ul><li><b>Damage:</b> 19 (40)</li><li><b>Attack Rate:</b> 1.30</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_spear",
+          "titleRu": "Копье",
+          "titleEn": "Spear",
+          "contentRu": "<p>Древковое оружие. Базовый урон тупой, дополнительный — колющий (кровотечение).</p><ul><li><b>Урон:</b> 17 (26)</li><li><b>Скорость атаки:</b> 1.30</li><li><b>Тип:</b> Blunt / Piercing</li></ul>",
+          "contentEn": "<p>Polearm weapon. Base damage is blunt, bonus is piercing (bleeding).</p><ul><li><b>Damage:</b> 17 (26)</li><li><b>Attack Rate:</b> 1.30</li><li><b>Type:</b> Blunt / Piercing</li></ul>"
+        },
+        {
+          "id": "w_telescopic_baton",
+          "titleRu": "Телескопическая дубинка",
+          "titleEn": "Telescopic Baton",
+          "contentRu": "<p>Компактная дубинка. Быстрая атака, тупой урон.</p><ul><li><b>Урон:</b> 9 (14)</li><li><b>Скорость атаки:</b> 2.00</li><li><b>Тип:</b> Blunt</li></ul>",
+          "contentEn": "<p>Compact baton. Fast attack, blunt damage.</p><ul><li><b>Damage:</b> 9 (14)</li><li><b>Attack Rate:</b> 2.00</li><li><b>Type:</b> Blunt</li></ul>"
+        },
+        {
+          "id": "w_tomahawk",
+          "titleRu": "Томагавк",
+          "titleEn": "Tomahawk",
+          "contentRu": "<p>Легкий боевой топорик. Вызывает кровотечение.</p><ul><li><b>Урон:</b> 16 (24)</li><li><b>Скорость атаки:</b> 1.73</li><li><b>Тип:</b> Slashing</li></ul>",
+          "contentEn": "<p>Light combat hatchet. Causes bleeding.</p><ul><li><b>Damage:</b> 16 (24)</li><li><b>Attack Rate:</b> 1.73</li><li><b>Type:</b> Slashing</li></ul>"
+        },
+        {
+          "id": "w_special_machete",
+          "titleRu": "!machete",
+          "titleEn": "!machete",
+          "contentRu": "<p>Особое мачете. Экстремально высокая скорость атаки и урон. Вызывает кровотечение. Невозможно получить в обычной игре.</p><ul><li><b>Урон:</b> 50 (100)</li><li><b>Скорость атаки:</b> 4.00</li><li><b>Тип:</b> Slashing</li></ul>",
+          "contentEn": "<p>Special machete. Extremely high attack speed and damage. Causes bleeding. Impossible to get in standart game.</p><ul><li><b>Damage:</b> 50 (100)</li><li><b>Attack Rate:</b> 4.00</li><li><b>Type:</b> Slashing</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "attachments",
+      "nameRu": "Модификаторы",
+      "nameEn": "Attachments",
+      "articles": [
+        {
+          "id": "att_weight",
+          "titleRu": "Утяжелитель",
+          "titleEn": "Weight",
+          "contentRu": "<p>Увеличивает массу оружия для более мощных ударов.</p><ul><li><b>Урон:</b> +25%</li><li><b>Скорость атаки:</b> -25%</li><li><b>Расход выносливости:</b> +30%</li></ul>",
+          "contentEn": "<p>Increases weapon mass for more powerful strikes.</p><ul><li><b>Damage:</b> +25%</li><li><b>Attack Rate:</b> -25%</li><li><b>Stamina Drain:</b> +30%</li></ul>"
+        },
+        {
+          "id": "att_light_grip",
+          "titleRu": "Легкая рукоять",
+          "titleEn": "Light Grip",
+          "contentRu": "<p>Облегченная рукоять для быстрого боя и восстановления.</p><ul><li><b>Урон:</b> -10%</li><li><b>Скорость атаки:</b> +15%</li><li><b>Регенерация выносливости:</b> +15%</li></ul>",
+          "contentEn": "<p>Lightweight grip for fast combat and recovery.</p><ul><li><b>Damage:</b> -10%</li><li><b>Attack Rate:</b> +15%</li><li><b>Stamina Regen:</b> +15%</li></ul>"
+        },
+        {
+          "id": "att_serrated_edge",
+          "titleRu": "Заостренный конец",
+          "titleEn": "Serrated Edge",
+          "contentRu": "<p>Неровная кромка наносит глубокие раны ценой скорости.</p><ul><li><b>Урон:</b> +20%</li><li><b>Скорость атаки:</b> -15%</li><li><b>Расход выносливости:</b> +10%</li></ul>",
+          "contentEn": "<p>Jagged edge deals deep wounds at the cost of speed.</p><ul><li><b>Damage:</b> +20%</li><li><b>Attack Rate:</b> -15%</li><li><b>Stamina Drain:</b> +10%</li></ul>"
+        },
+        {
+          "id": "att_circular_saw",
+          "titleRu": "Циркулярная пила",
+          "titleEn": "Circular Saw",
+          "contentRu": "<p>Механическая насадка. Наносит множественные быстрые порезы, замедляя анимацию при попадании. Значительно снижает базовый урон за один тик.</p><ul><li><b>Урон:</b> 60% (за тик)</li><li><b>Особенность:</b> Множественные попадания</li></ul>",
+          "contentEn": "<p>Mechanical attachment. Deals multiple rapid cuts, slowing animation on hit. Significantly reduces base damage per tick.</p><ul><li><b>Damage:</b> 60% (per tick)</li><li><b>Feature:</b> Multi-hit</li></ul>"
+        }
+      ]
+    }
+  ]
+}

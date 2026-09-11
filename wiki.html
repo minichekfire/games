@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki — The Late Light</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #05070f;
+            --bg-panel: #0b1020;
+            --bg-panel-2: #10162b;
+            --line: #1e2740;
+            --blue-1: #0d1730;
+            --blue-2: #16224a;
+            --blue-glow: #2c4a9e;
+            --accent-red: #c22e3a;
+            --accent-red-bright: #ef3b48;
+            --text-main: #e7ebf7;
+            --text-dim: #8b93b0;
+            --text-faint: #545d7d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(ellipse 900px 500px at 15% -10%, rgba(44,74,158,0.28), transparent 60%), radial-gradient(ellipse 700px 500px at 100% 10%, rgba(194,46,58,0.10), transparent 55%), var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            line-height: 1.55;
+        }
+
+        ::selection {
+            background: var(--accent-red);
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .strip {
+            border-bottom: 1px solid var(--line);
+            background: rgba(11,16,32,0.7);
+            backdrop-filter: blur(6px);
+            padding: 14px 6vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .brand .dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--accent-red-bright);
+                box-shadow: 0 0 10px var(--accent-red-bright);
+            }
+
+            .brand small {
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                color: var(--text-dim);
+                text-transform: none;
+                font-size: 0.75rem;
+                margin-left: 6px;
+            }
+
+        .strip-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .strip-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.03em;
+            transition: color .15s;
+        }
+
+            .strip-links a:hover {
+                color: var(--text-main);
+            }
+
+        .lang-toggle {
+            background: var(--bg-panel);
+            border: 1px solid var(--line);
+            color: var(--text-dim);
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all .15s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .lang-toggle:hover {
+                border-color: var(--blue-glow);
+                color: var(--text-main);
+            }
+
+            .lang-toggle.active {
+                background: var(--blue-2);
+                border-color: var(--blue-glow);
+                color: #fff;
+            }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            max-width: 1280px;
+            margin: 0 auto;
+            min-height: calc(100vh - 62px);
+        }
+
+        @media (max-width: 860px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+            }
+        }
+
+        .sidebar {
+            border-right: 1px solid var(--line);
+            padding: 22px 16px 40px;
+            position: sticky;
+            top: 62px;
+            align-self: start;
+            max-height: calc(100vh - 62px);
+            overflow-y: auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+            .search-box input {
+                width: 100%;
+                background: var(--bg-panel);
+                border: 1px solid var(--line);
+                color: var(--text-main);
+                padding: 9px 12px 9px 34px;
+                border-radius: 7px;
+                font-size: 0.85rem;
+                font-family: inherit;
+            }
+
+                .search-box input:focus {
+                    outline: none;
+                    border-color: var(--blue-glow);
+                }
+
+            .search-box i {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--text-faint);
+                font-size: 0.8rem;
+            }
+
+        .cat-block {
+            margin-bottom: 6px;
+        }
+
+        .cat-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 8px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: var(--text-dim);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: background .15s, color .15s;
+        }
+
+            .cat-head:hover {
+                background: var(--bg-panel);
+                color: var(--text-main);
+            }
+
+            .cat-head .chev {
+                transition: transform .15s;
+                font-size: 0.7rem;
+                color: var(--text-faint);
+            }
+
+        .cat-block.collapsed .chev {
+            transform: rotate(-90deg);
+        }
+
+        .cat-block.collapsed .article-list {
+            display: none;
+        }
+
+        .article-list {
+            padding: 2px 0 8px 4px;
+        }
+
+        .article-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            padding: 7px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-dim);
+            font-size: 0.84rem;
+            border-left: 2px solid transparent;
+            transition: all .15s;
+        }
+
+            .article-item:hover {
+                color: var(--text-main);
+                background: var(--bg-panel);
+            }
+
+            .article-item.active {
+                color: var(--text-main);
+                border-left-color: var(--accent-red-bright);
+                background: var(--bg-panel);
+            }
+
+        .content {
+            padding: 34px 5vw 60px 4vw;
+            max-width: 880px;
+        }
+
+        .empty-state {
+            color: var(--text-dim);
+            padding-top: 60px;
+            text-align: center;
+        }
+
+            .empty-state i {
+                font-size: 2.2rem;
+                color: var(--text-faint);
+                margin-bottom: 14px;
+                display: block;
+            }
+
+        .article-header {
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .crumb {
+            font-size: 0.76rem;
+            color: var(--text-faint);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .article-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            letter-spacing: 0.01em;
+        }
+
+        .article-body {
+            font-size: 0.98rem;
+            color: var(--text-main);
+        }
+
+            .article-body p {
+                margin-bottom: 14px;
+            }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-faint);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--line);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="strip">
+        <div class="brand"><span class="dot"></span>THE LATE LIGHT<small>WIKI</small></div>
+        <div class="strip-right">
+            <button class="lang-toggle active" id="btn-lang" onclick="toggleLang()">
+                <i class="fas fa-globe"></i> <span id="lang-label">RU</span>
+            </button>
+            <div class="strip-links"><a href="the_late_light.html"><i class="fas fa-arrow-left"></i> На главную</a></div>
+        </div>
+    </div>
+
+    <div class="layout" id="layout">
+        <aside class="sidebar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Поиск по вики...">
+            </div>
+            <div id="category-tree"></div>
+        </aside>
+
+        <main class="content" id="content">
+            <div class="empty-state">
+                <i class="fas fa-book-skull"></i>
+                Выберите статью слева, чтобы начать чтение.
+            </div>
+        </main>
+    </div>
+
+    <footer>Wiki проекта The Late Light &middot; ведётся разработчиком &middot; bigWater6464</footer>
+
+    <script>
+        const DEFAULT_DATA = {
+        categories: [
+        {
+        id: "gameplay",
+        nameRu: "Механики",
+        nameEn: "Mechanics",
+        articles: [
+        { id: "combat", titleRu: "Ближний бой", titleEn: "Melee Combat", contentRu: "Опишите здесь принципы боевой системы: типы оружия, удары, блоки, выносливость.\n\nЭто пример статьи.", contentEn: "Describe combat mechanics here: weapon types, strikes, blocks, stamina.\n\nThis is a sample article." },
+        { id: "parkour", titleRu: "Паркур", titleEn: "Parkour", contentRu: "Опишите здесь механику паркура: какие действия доступны игроку, как добраться до труднодоступных мест.", contentEn: "Describe parkour mechanics here: available player actions, how to reach hard-to-access areas." }
+        ]
+        },
+        {
+        id: "world",
+        nameRu: "Мир",
+        nameEn: "World",
+        articles: [
+        { id: "npc", titleRu: "NPC и враги", titleEn: "NPCs & Enemies", contentRu: "Опишите типы NPC, их поведение и опасность.", contentEn: "Describe NPC types, their behavior and danger level." }
+        ]
+        },
+        {
+        id: "dev",
+        nameRu: "Разработка",
+        nameEn: "Development",
+        articles: [
+        { id: "about", titleRu: "О проекте", titleEn: "About Project", contentRu: "The Late Light - низкополигональная игра о ближнем бою и выживании, вдохновлённая серией Dying Light.\n\nЗдесь можно вести заметки о планах разработки, идеях и истории проекта.", contentEn: "The Late Light is a low-poly melee combat and survival game inspired by the Dying Light series.\n\nUse this space for dev notes, ideas and project history." }
+        ]
+        }
+        ]
+        };
+
+        let wikiData = null;
+        let currentArticle = null;
+        let currentLang = localStorage.getItem('tll_wiki_lang') || 'ru';
+
+        function loc(obj, field) {
+        const primary = currentLang === 'ru' ? obj[field + 'Ru'] : obj[field + 'En'];
+        const fallback = currentLang === 'ru' ? obj[field + 'En'] : obj[field + 'Ru'];
+        return (primary && primary.trim()) ? primary : (fallback || '');
+        }
+
+        function toggleLang() {
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        localStorage.setItem('tll_wiki_lang', currentLang);
+        document.getElementById('lang-label').textContent = currentLang.toUpperCase();
+        document.getElementById('search-input').placeholder = currentLang === 'ru' ? 'Поиск по вики...' : 'Search wiki...';
+        renderSidebar();
+        renderContent();
+        }
+
+        async function loadData() {
+        try {
+        const res = await fetch("wiki-data.json", { cache: "no-store" });
+        if (res.ok) { wikiData = await res.json(); return; }
+        } catch (e) {}
+        wikiData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
+
+        function renderSidebar() {
+        const tree = document.getElementById("category-tree");
+        tree.innerHTML = "";
+        const query = document.getElementById("search-input").value.trim().toLowerCase();
+
+        wikiData.categories.forEach(cat => {
+        const matchingArticles = cat.articles.filter(a => {
+        if (!query) return true;
+        const tRu = (a.titleRu || '').toLowerCase();
+        const tEn = (a.titleEn || '').toLowerCase();
+        const cRu = (a.contentRu || '').toLowerCase();
+        const cEn = (a.contentEn || '').toLowerCase();
+        const catNameRu = (cat.nameRu || '').toLowerCase();
+        const catNameEn = (cat.nameEn || '').toLowerCase();
+        return tRu.includes(query) || tEn.includes(query) || cRu.includes(query) || cEn.includes(query) || catNameRu.includes(query) || catNameEn.includes(query);
+        });
+        if (query && matchingArticles.length === 0) return;
+
+        const block = document.createElement("div");
+        block.className = "cat-block";
+
+        const head = document.createElement("div");
+        head.className = "cat-head";
+        const catName = currentLang === 'ru' ? (cat.nameRu || cat.nameEn) : (cat.nameEn || cat.nameRu);
+        head.innerHTML = `<span>${escapeHtml(catName)}</span><i class="fas fa-chevron-down chev"></i>`;
+        head.addEventListener("click", () => block.classList.toggle("collapsed"));
+        block.appendChild(head);
+
+        const list = document.createElement("div");
+        list.className = "article-list";
+
+        matchingArticles.forEach(art => {
+        const item = document.createElement("div");
+        const isActive = currentArticle && currentArticle.catId === cat.id && currentArticle.artId === art.id;
+        item.className = "article-item" + (isActive ? " active" : "");
+        item.innerHTML = `<span>${escapeHtml(loc(art, 'title'))}</span>`;
+        item.querySelector("span").addEventListener("click", () => openArticle(cat.id, art.id));
+        list.appendChild(item);
+        });
+
+        block.appendChild(list);
+        tree.appendChild(block);
+        });
+        }
+
+        function escapeHtml(str) {
+        const d = document.createElement("div");
+        d.textContent = str;
+        return d.innerHTML;
+        }
+
+        function openArticle(catId, artId) {
+        currentArticle = { catId, artId };
+        renderSidebar();
+        renderContent();
+        }
+
+        function renderContent() {
+            const content = document.getElementById("content");
+            if (!currentArticle) {
+                const msg = currentLang === 'ru'
+                    ? 'Выберите статью слева, чтобы начать чтение.'
+                    : 'Select an article from the sidebar to start reading.';
+                content.innerHTML = `<div class="empty-state"><i class="fas fa-book-skull"></i>${msg}</div>`;
+                return;
+            }
+            const cat = wikiData.categories.find(c => c.id === currentArticle.catId);
+            const art = cat ? cat.articles.find(a => a.id === currentArticle.artId) : null;
+            if (!art) { currentArticle = null; return renderContent(); }
+
+            content.innerHTML = `
+                <div class="article-header">
+                    <div class="crumb">${escapeHtml(loc(cat, 'name'))}</div>
+                    <div class="article-title">${escapeHtml(loc(art, 'title'))}</div>
+                </div>
+                <div class="article-body">${loc(art, 'content')}</div>
+            `;
+        }
+
+        document.getElementById("search-input").addEventListener("input", renderSidebar);
+
+        document.getElementById('lang-label').textContent = currentLang.toUpperCase();
+        document.getElementById('search-input').placeholder = currentLang === 'ru' ? 'Поиск по вики...' : 'Search wiki...';
+
+        (async function init() {
+        await loadData();
+        renderSidebar();
+        renderContent();
+        })();
+    </script>
+</body>
+</html>

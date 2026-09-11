@@ -5,6 +5,9 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +20,6 @@ namespace InfinitariumManager
         private string _filePath = "";
         private string _originalHtml = "";
 
-        // Full ru/en dictionaries parsed from the file, in original order, BEFORE any edits.
-        // Used at save-time to preserve every translation key that this tool doesn't manage
-        // (site chrome strings like changelog_link, eyebrow_text, etc).
         private List<KeyValuePair<string, string>> _ruOriginal = new List<KeyValuePair<string, string>>();
         private List<KeyValuePair<string, string>> _enOriginal = new List<KeyValuePair<string, string>>();
 
@@ -42,7 +42,6 @@ namespace InfinitariumManager
             { "Patches", "patches" },
         };
 
-        // Matches: const translations = { ru: { ... }, en: { ... } };
         private static readonly Regex TranslationsBlockRegex = new Regex(
             @"const translations = \{\s*\r?\n\s*ru:\s*\{([\s\S]*?)\r?\n\s*\},\s*\r?\n\s*en:\s*\{([\s\S]*?)\r?\n\s*\}\s*\r?\n\s*\};",
             RegexOptions.Compiled);
@@ -121,7 +120,84 @@ namespace InfinitariumManager
             protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        public class WikiArticle : INotifyPropertyChanged
+        {
+            private string _id = "";
+            private string _titleRu = "";
+            private string _titleEn = "";
+            private string _contentRu = "";
+            private string _contentEn = "";
+
+            public string Id { get => _id; set { _id = value; OnPropertyChanged(nameof(Id)); } }
+            public string TitleRu { get => _titleRu; set { _titleRu = value; OnPropertyChanged(nameof(TitleRu)); OnPropertyChanged(nameof(DisplayTitle)); } }
+            public string TitleEn { get => _titleEn; set { _titleEn = value; OnPropertyChanged(nameof(TitleEn)); OnPropertyChanged(nameof(DisplayTitle)); } }
+            public string ContentRu { get => _contentRu; set { _contentRu = value; OnPropertyChanged(nameof(ContentRu)); } }
+            public string ContentEn { get => _contentEn; set { _contentEn = value; OnPropertyChanged(nameof(ContentEn)); } }
+            public string DisplayTitle => !string.IsNullOrWhiteSpace(TitleRu) ? TitleRu : TitleEn;
+
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public class WikiCategory : INotifyPropertyChanged
+        {
+            private string _id = "";
+            private string _nameRu = "";
+            private string _nameEn = "";
+
+            public string Id { get => _id; set { _id = value; OnPropertyChanged(nameof(Id)); } }
+
+            public string NameRu
+            {
+                get => _nameRu;
+                set { _nameRu = value; OnPropertyChanged(nameof(NameRu)); OnPropertyChanged(nameof(DisplayName)); }
+            }
+
+            public string NameEn
+            {
+                get => _nameEn;
+                set { _nameEn = value; OnPropertyChanged(nameof(NameEn)); OnPropertyChanged(nameof(DisplayName)); }
+            }
+
+            public string DisplayName => !string.IsNullOrWhiteSpace(NameRu) ? NameRu : NameEn;
+
+            public ObservableCollection<WikiArticle> Articles { get; set; } = new ObservableCollection<WikiArticle>();
+
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private class WikiArticleDto
+        {
+            [JsonPropertyName("id")] public string Id { get; set; } = "";
+            [JsonPropertyName("titleRu")] public string TitleRu { get; set; } = "";
+            [JsonPropertyName("titleEn")] public string TitleEn { get; set; } = "";
+            [JsonPropertyName("contentRu")] public string ContentRu { get; set; } = "";
+            [JsonPropertyName("contentEn")] public string ContentEn { get; set; } = "";
+            [JsonPropertyName("title")] public string LegacyTitle { set { if (string.IsNullOrEmpty(TitleRu)) TitleRu = value; } }
+            [JsonPropertyName("content")] public string LegacyContent { set { if (string.IsNullOrEmpty(ContentRu)) ContentRu = value; } }
+        }
+
+        private class WikiCategoryDto
+        {
+            [JsonPropertyName("id")] public string Id { get; set; } = "";
+            [JsonPropertyName("nameRu")] public string NameRu { get; set; } = "";
+            [JsonPropertyName("nameEn")] public string NameEn { get; set; } = "";
+            [JsonPropertyName("articles")] public List<WikiArticleDto> Articles { get; set; } = new List<WikiArticleDto>();
+            [JsonPropertyName("name")] public string LegacyName { set { if (string.IsNullOrEmpty(NameRu)) NameRu = value; } }
+        }
+
+        private class WikiRootDto
+        {
+            [JsonPropertyName("categories")] public List<WikiCategoryDto> Categories { get; set; } = new List<WikiCategoryDto>();
+        }
+
         private ObservableCollection<VersionItem> _versions = new ObservableCollection<VersionItem>();
+
+        private string _wikiFilePath = "";
+        private ObservableCollection<WikiCategory> _wikiCategories = new ObservableCollection<WikiCategory>();
+        private WikiArticle _selectedWikiArticle = null;
+        private bool _suppressArticleTextEvents = false;
 
         public MainWindow()
         {
@@ -129,6 +205,7 @@ namespace InfinitariumManager
             DataContext = this;
             LstVersions.ItemsSource = _versions;
             ListSections.ItemsSource = new ObservableCollection<ChangelogSection>();
+            LstCategories.ItemsSource = _wikiCategories;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -154,8 +231,6 @@ namespace InfinitariumManager
                 }
             }
         }
-
-        // ================= PARSING =================
 
         private static string SanitizeId(string id) => Regex.Replace(id ?? "", "[^a-zA-Z0-9]", "");
 
@@ -197,8 +272,6 @@ namespace InfinitariumManager
                 string id = match.Groups[1].Value.Trim();
                 string label = match.Groups[2].Value.Trim();
 
-                // A version is "unreleased" if the stylesheet has a dedicated
-                // .tab-btn[data-tab="ID"] rule targeting it (see ReplaceUnreleasedCss).
                 bool isUnreleased = _originalHtml.Contains($".tab-btn[data-tab=\"{id}\"]");
 
                 string contentPattern = $@"<div\s+[^>]*?id=""{Regex.Escape(id)}""[^>]*?class=""tab-content[^""]*""[^>]*?>([\s\S]*?)</div>\s*(?=<div\s+[^>]*?id=""|</div>\s*<button class=""close-modal"")";
@@ -268,8 +341,6 @@ namespace InfinitariumManager
 
             return sections;
         }
-
-        // ================= EDITOR WIRING =================
 
         private void LstVersions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -376,8 +447,6 @@ namespace InfinitariumManager
             ListSections.ItemsSource = new ObservableCollection<ChangelogSection>();
         }
 
-        // ================= SAVING =================
-
         private static int FindMatchingBrace(string s, int openBraceIndex)
         {
             int depth = 0;
@@ -420,7 +489,7 @@ namespace InfinitariumManager
         private string ReplaceUnreleasedCss(string html, List<string> unreleasedIds)
         {
             int activeIdx = html.IndexOf(".tab-btn.active", StringComparison.Ordinal);
-            if (activeIdx < 0) return html; // stylesheet shape not recognized, leave untouched
+            if (activeIdx < 0) return html;
 
             int braceOpen = html.IndexOf('{', activeIdx);
             if (braceOpen < 0) return html;
@@ -496,7 +565,6 @@ namespace InfinitariumManager
 
             try
             {
-                // Preserve every translation key this tool doesn't own (site chrome, UI labels, etc).
                 var ruFinal = _ruOriginal.Where(kv => !IsManagedKey(kv.Key)).ToList();
                 var enFinal = _enOriginal.Where(kv => !IsManagedKey(kv.Key)).ToList();
                 foreach (var kv in FixedSectionTitles)
@@ -603,8 +671,6 @@ namespace InfinitariumManager
                 MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        // ================= EXPORT =================
 
         private void BtnExportSingleTxt_Click(object sender, RoutedEventArgs e)
         {
@@ -716,6 +782,249 @@ namespace InfinitariumManager
             }
 
             return sb.ToString();
+        }
+
+        private static readonly JsonSerializerOptions WikiWriteOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+
+        private static string GenerateWikiId() => Guid.NewGuid().ToString("N").Substring(0, 8);
+
+        private void LoadWikiFromDto(WikiRootDto dto)
+        {
+            _wikiCategories.Clear();
+            foreach (var catDto in dto.Categories)
+            {
+                var cat = new WikiCategory
+                {
+                    Id = string.IsNullOrWhiteSpace(catDto.Id) ? GenerateWikiId() : catDto.Id,
+                    NameRu = catDto.NameRu,
+                    NameEn = catDto.NameEn
+                };
+                foreach (var artDto in catDto.Articles)
+                {
+                    cat.Articles.Add(new WikiArticle
+                    {
+                        Id = string.IsNullOrWhiteSpace(artDto.Id) ? GenerateWikiId() : artDto.Id,
+                        TitleRu = artDto.TitleRu,
+                        TitleEn = artDto.TitleEn,
+                        ContentRu = artDto.ContentRu,
+                        ContentEn = artDto.ContentEn
+                    });
+                }
+                _wikiCategories.Add(cat);
+            }
+        }
+
+        private WikiRootDto BuildWikiDto()
+        {
+            var dto = new WikiRootDto();
+            foreach (var cat in _wikiCategories)
+            {
+                var catDto = new WikiCategoryDto
+                {
+                    Id = cat.Id,
+                    NameRu = cat.NameRu,
+                    NameEn = cat.NameEn
+                };
+                foreach (var art in cat.Articles)
+                {
+                    catDto.Articles.Add(new WikiArticleDto
+                    {
+                        Id = art.Id,
+                        TitleRu = art.TitleRu,
+                        TitleEn = art.TitleEn,
+                        ContentRu = art.ContentRu,
+                        ContentEn = art.ContentEn
+                    });
+                }
+                dto.Categories.Add(catDto);
+            }
+            return dto;
+        }
+
+        private void BtnWikiOpen_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog { Filter = "JSON Files|*.json", Title = "Выберите wiki-data.json" };
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    string json = File.ReadAllText(dialog.FileName);
+                    var dto = JsonSerializer.Deserialize<WikiRootDto>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                              ?? new WikiRootDto();
+                    LoadWikiFromDto(dto);
+
+                    _wikiFilePath = dialog.FileName;
+                    LblWikiFilePath.Text = System.IO.Path.GetFileName(_wikiFilePath);
+                    BtnWikiSave.IsEnabled = true;
+                    ClearWikiEditor();
+                    LblStatus.Text = $"Загружено {_wikiCategories.Count} категорий вики.";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось прочитать файл: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void BtnWikiNew_Click(object sender, RoutedEventArgs e)
+        {
+            if (_wikiCategories.Count > 0)
+            {
+                if (MessageBox.Show("Начать новый файл вики? Несохранённые изменения текущего файла будут потеряны из памяти (сам файл на диске не тронется).",
+                        "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
+                    return;
+            }
+
+            _wikiCategories.Clear();
+            _wikiFilePath = "";
+            LblWikiFilePath.Text = "Файл не выбран (будет создан при сохранении)";
+            BtnWikiSave.IsEnabled = true;
+            ClearWikiEditor();
+            LblStatus.Text = "Создан новый пустой файл вики. Добавьте категории и статьи, затем сохраните.";
+        }
+
+        private void BtnWikiSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_wikiFilePath))
+            {
+                var dialog = new SaveFileDialog
+                {
+                    Filter = "JSON Files|*.json",
+                    Title = "Сохранить wiki-data.json",
+                    FileName = "wiki-data.json"
+                };
+                if (dialog.ShowDialog() != true) return;
+                _wikiFilePath = dialog.FileName;
+                LblWikiFilePath.Text = System.IO.Path.GetFileName(_wikiFilePath);
+            }
+
+            try
+            {
+                var dto = BuildWikiDto();
+                string json = JsonSerializer.Serialize(dto, WikiWriteOptions);
+                File.WriteAllText(_wikiFilePath, json);
+
+                MessageBox.Show("Wiki сохранена успешно!\n\nНе забудьте загрузить этот файл на хостинг рядом с wiki.html, чтобы изменения увидели все игроки.",
+                    "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                LblStatus.Text = "wiki-data.json сохранён.";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private WikiCategory SelectedCategory => LstCategories.SelectedItem as WikiCategory;
+
+        private void LstCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cat = SelectedCategory;
+            LstArticles.ItemsSource = cat?.Articles;
+            BtnAddArticle.IsEnabled = cat != null;
+            ClearWikiEditor();
+        }
+
+        private void LstArticles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _selectedWikiArticle = LstArticles.SelectedItem as WikiArticle;
+            if (_selectedWikiArticle == null)
+            {
+                ClearWikiEditor();
+                return;
+            }
+
+            _suppressArticleTextEvents = true;
+            TxtArticleTitleRu.Text = _selectedWikiArticle.TitleRu;
+            TxtArticleTitleEn.Text = _selectedWikiArticle.TitleEn;
+            TxtArticleContentRu.Text = _selectedWikiArticle.ContentRu;
+            TxtArticleContentEn.Text = _selectedWikiArticle.ContentEn;
+            _suppressArticleTextEvents = false;
+
+            ScrollArticleEditor.Visibility = Visibility.Visible;
+            LblWikiEmptyState.Visibility = Visibility.Collapsed;
+        }
+
+        private void ClearWikiEditor()
+        {
+            _selectedWikiArticle = null;
+            _suppressArticleTextEvents = true;
+            TxtArticleTitleRu.Text = "";
+            TxtArticleTitleEn.Text = "";
+            TxtArticleContentRu.Text = "";
+            TxtArticleContentEn.Text = "";
+            _suppressArticleTextEvents = false;
+            ScrollArticleEditor.Visibility = Visibility.Collapsed;
+            LblWikiEmptyState.Visibility = Visibility.Visible;
+        }
+
+        private void TxtArticle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_suppressArticleTextEvents || _selectedWikiArticle == null || !(sender is TextBox tb)) return;
+
+            string tag = tb.Tag as string;
+            switch (tag)
+            {
+                case "TitleRu": _selectedWikiArticle.TitleRu = tb.Text; break;
+                case "TitleEn": _selectedWikiArticle.TitleEn = tb.Text; break;
+                case "ContentRu": _selectedWikiArticle.ContentRu = tb.Text; break;
+                case "ContentEn": _selectedWikiArticle.ContentEn = tb.Text; break;
+            }
+        }
+
+        private void BtnAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+            var cat = new WikiCategory
+            {
+                Id = GenerateWikiId(),
+                NameRu = "Новая категория",
+                NameEn = "New Category"
+            };
+            _wikiCategories.Add(cat);
+            LstCategories.SelectedItem = cat;
+            LblStatus.Text = "Категория добавлена. Переименуйте её и добавьте статьи.";
+        }
+
+        private void BtnDeleteCategory_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is WikiCategory cat)
+            {
+                if (MessageBox.Show($"Удалить категорию «{cat.DisplayName}» вместе со всеми статьями в ней?",
+                        "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    _wikiCategories.Remove(cat);
+                    LstArticles.ItemsSource = null;
+                    ClearWikiEditor();
+                }
+            }
+        }
+
+        private void BtnAddArticle_Click(object sender, RoutedEventArgs e)
+        {
+            var cat = SelectedCategory;
+            if (cat == null) return;
+
+            var art = new WikiArticle { Id = GenerateWikiId(), TitleRu = "Новая статья", TitleEn = "New Article", ContentRu = "Текст статьи...", ContentEn = "Article content..." };
+            cat.Articles.Add(art);
+            LstArticles.SelectedItem = art;
+            LblStatus.Text = "Статья добавлена.";
+        }
+
+        private void BtnDeleteArticle_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is WikiArticle art)
+            {
+                var cat = SelectedCategory;
+                if (cat == null) return;
+                if (MessageBox.Show($"Удалить статью «{art.DisplayTitle}»?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    cat.Articles.Remove(art);
+                    if (_selectedWikiArticle == art) ClearWikiEditor();
+                }
+            }
         }
     }
 }

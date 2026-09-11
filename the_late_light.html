@@ -46,7 +46,6 @@
             color: #fff;
         }
 
-        /* ---------- top strip ---------- */
         .strip {
             border-bottom: 1px solid var(--line);
             background: rgba(11,16,32,0.7);
@@ -104,7 +103,6 @@
                     color: var(--text-main);
                 }
 
-        /* Language Switcher */
         .lang-switch {
             display: flex;
             background: var(--bg-panel);
@@ -140,7 +138,6 @@
                 color: #fff;
             }
 
-        /* ---------- hero ---------- */
         .hero {
             position: relative;
             padding: 8vw 6vw 5vw;
@@ -241,7 +238,6 @@
                     margin-right: 6px;
                 }
 
-        /* ---------- install section ---------- */
         .install {
             padding: 5vw 6vw;
             border-bottom: 1px solid var(--line);
@@ -441,7 +437,6 @@
                 font-size: 0.85rem;
             }
 
-        /* ---------- changelog trigger section ---------- */
         .changelog-cta {
             padding: 5vw 6vw 7vw;
             display: flex;
@@ -494,7 +489,6 @@
             border-top: 1px solid var(--line);
         }
 
-        /* ================= MODAL / CHANGELOG ================= */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -771,6 +765,7 @@
         <div class="brand"><span class="dot"></span>THE LATE LIGHT</div>
         <div class="strip-right">
             <div class="strip-links">
+                <a href="wiki.html">Wiki</a>
                 <a id="open-changelog-link" data-lang-key="changelog_link">Changelog</a>
             </div>
             <div class="lang-switch">
@@ -902,7 +897,7 @@
                         <div class="changelog-section">
                             <h3 data-lang-key="additions">Additions:</h3>
                             <ul class="changelog-list">
-<li data-lang-key="cl_v31_1">New weapons: SPAS-12, M4A1</li>
+<li data-lang-key="cl_v31_1">New weapons: SPAS-12, M4A1 (only airdrop)</li>
 <li data-lang-key="cl_v31_2">New Achievements</li>
 <li data-lang-key="cl_v31_3">Weapons jump animations</li>
                             </ul>
@@ -1714,7 +1709,7 @@
         bug_fixes: "Исправления ошибок:",
         patches: "Патчи:",
         nothing_here: "Здесь пока ничего нет...",
-        cl_v31_1: "Новые оружия: SPAS-12, M4A1",
+        cl_v31_1: "Новые оружия: SPAS-12, M4A1 (только в аирдропе)",
         cl_v31_2: "Новые достижения",
         cl_v31_3: "Анимация прыжка у оружий",
         cl_v31_4: "НИПы перелезают через препятствия",
@@ -2038,7 +2033,7 @@
         bug_fixes: "Bug Fixes:",
         patches: "Patches:",
         nothing_here: "Nothing here yet...",
-        cl_v31_1: "New weapons: SPAS-12, M4A1",
+        cl_v31_1: "New weapons: SPAS-12, M4A1 (only airdrop)",
         cl_v31_2: "New Achievements",
         cl_v31_3: "Weapons jump animations",
         cl_v31_4: "NPCs vaulting over obstacles",
@@ -2338,7 +2333,7 @@
 
         let currentLang = 'en';
 
-        setLanguage(currentLang); 
+        setLanguage(currentLang);
 
         function setLanguage(lang) {
         currentLang = lang;
