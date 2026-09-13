@@ -9,7 +9,7 @@
           "id": "combat",
           "titleRu": "Ближний бой",
           "titleEn": "Melee Combat",
-          "contentRu": "<p>Ближний бой — важная часть игры, которая будет использоваться большее количество времени.</p>\r\n\r\n<h2>Типы атак</h2>\r\n<ul>\r\n    <li>Blunt</li>\r\n    <li>Slashing (вызывает кровотечение)</li>\r\n    <li>Piercing (вызывает кровотечение)</li>\r\n</ul>\r\n\r\n<p>С помощью оружия ближнего боя можно блокировать или паррировать удары.</p>",
+          "contentRu": "<p>Ближний бой — важная часть игры, которая будет использоваться большее количество времени.</p>\r\n\r\n<h2>Типы атак</h2>\r\n<ul>\r\n    <li>Blunt (тупой)</li>\r\n    <li>Slashing (режущий) (вызывает кровотечение)</li>\r\n    <li>Piercing (пронзительный/колящий) (вызывает кровотечение)</li>\r\n</ul>\r\n\r\n<p>С помощью оружия ближнего боя можно блокировать или паррировать удары.</p>",
           "contentEn": "<p>Melee combat is an important part of the game and will be used for a significant amount of time.</p>\r\n\r\n<h2>Attack Types</h2>\r\n<ul>\r\n    <li>Blunt</li>\r\n    <li>Slashing (causes bleeding)</li>\r\n    <li>Piercing (causes bleeding)</li>\r\n</ul>\r\n\r\n<p>You can block or parry attacks with melee weapons.</p>"
         },
         {
@@ -32,6 +32,13 @@
           "titleEn": "NPCs",
           "contentRu": "<p>На карте могут появляться НИПы, в основном - бандиты, выжившие, зомби и ночные охотники.</p>",
           "contentEn": "<p>NPCs can spawn on the map, generally its bandits, zombies & night hunters.</p>"
+        },
+        {
+          "id": "ea239324",
+          "titleRu": "Ящики",
+          "titleEn": "Chests",
+          "contentRu": "<p>Ящики - это контейнеры оружий и предметов.</p>\r\n\r\n<p>Ящики могут быть открытыми, или закрытыми. Если ящик закрыт, то его можно будет взломать.<p>\r\n\r\n<b><p>В открытых ящиках может появиться:</p></b>\r\n<ul>\r\n90%:\r\n<li>Мачете</li>\r\n<li>Копье</li>\r\n<li>Труба</li>\r\n<li>Пожарный топор</li>\r\n<li>Бита</li>\r\n<li>Кастеты</li>\r\n<li>Тесак</li>\r\n<li>Монтировка</li>\r\n<li>Томагавк</li>\r\n<li>Телескопическая дубинка</li>\r\n<li>Нож</li><br>\r\n50%:\r\n<li>Красный стимул</li>\r\n<li>Бандаж</li>\r\n</ul><br>\r\n\r\n<b><p>В закрытых ящиках может появиться то же самое что и в открытом, но шанс на стимул и бандаж значительно выше, а так же может выпасть Кувалда.</p></b>",
+          "contentEn": "<p>Crates are containers for weapons and items.</p>\r\n\r\n<p>Crates can be open or closed. If the crate is locked, it can be picked.<p>\r\n\r\n<b><p>Open crates may contain:</p></b>\r\n<ul>\r\n<li>90%:</li>\r\n<li>Machete</li>\r\n<li>Spear</li>\r\n<li>Leadpipe</li>\r\n<li>Fire Axe</li>\r\n<li>Bat</li>\r\n<li>Brass Knuckles</li>\r\n<li>Cleaver</li>\r\n<li>Crowbar</li>\r\n<li>Tomahawk</li>\r\n<li>Telescopic Baton</li>\r\n<li>Knife</li><br>\r\n<li>50%:</li>\r\n<li>Red Stim</li>\r\n<li>Bandage</li>\r\n</ul><br>\r\n\r\n<b><p>Closed crates may contain the same items as open crates, but the chance of receiving a Stimulus and a Bandage is significantly higher, and a drop may also occur. Sledgehammer.</p></b>"
         }
       ]
     },
@@ -67,6 +74,20 @@
           "titleEn": "Night Hunter",
           "contentRu": "<p>Ночной охотник - агрессивный/зараженный НИП, который атакует игрока, выживших и бандитов.</p>\r\n<p>Не может появиться с оружием.</p>\r\n<p>Имеет 590 ХП.</p>",
           "contentEn": "<p>Night Hunter - agressive/infected NPC that attacks player, survivors & bandits.</p>\r\n<p>Cannot spawn with weapon.</p>\r\n\r\n<p>Has 590 HP.</p>"
+        },
+        {
+          "id": "4fb0a77e",
+          "titleRu": "Тяжелый Бандит",
+          "titleEn": "Heavy Bandit",
+          "contentRu": "<p>Тяжелый Бандит - агрессивный НИП, который атакует игрока, выживших и зараженных.</p>\r\n\r\n<p><b>Может появиться с одним из этих оружий:</b></p>\r\n<ul>\r\n    <li>Пожарный топор</li>\r\n    <li>Кувалда</li>\r\n</ul>\r\n\r\n<p>Имеет 300 ХП.</p>",
+          "contentEn": "<p>Heavy Bandit - aggressive NPC that attacks player, survivors & infected.</p>\r\n\r\n<p><b>Can spawn with one of these weapons:</b></p>\r\n<ul>\r\n    <li>Fire Axe</li>\r\n    <li>Sledgehammer</li>\r\n</ul>\r\n\r\n<p>Has 300 HP.</p>"
+        },
+        {
+          "id": "6863e0e4",
+          "titleRu": "\"Тень\"",
+          "titleEn": "\"The Shadow\"",
+          "contentRu": "<p>\"Тень\" - агрессивный НИП, который атакует всех, кроме себе подобных.</p>\r\n\r\n<p><b>Появляется с неизвестным оружием, похожим на кастеты, но заостренные.</b></p>\r\n\r\n<p>Имеет 1200 ХП.</p>\r\n\r\n<p>Не может появиться в режиме Survival.</b>",
+          "contentEn": "<p>\"Shadow\" is an aggressive NPC who attacks everyone except his own kind.</p>\r\n\r\n<p><b>Appears with an unknown weapon, similar to brass knuckles, but sharpened.</b></p>\r\n\r\n<p>Has 1200 HP.</p>\r\n\r\n<p>Cannot spawn in survival gamemode."
         }
       ]
     },
@@ -79,8 +100,8 @@
           "id": "217f7d63",
           "titleRu": "Кулаки",
           "titleEn": "Fists",
-          "contentRu": "<p>Базовое оружие ближнего боя. Наносит тупой урон.</p><ul><li><b>Урон:</b> 6 (13)</li><li><b>Скорость атаки:</b> 1.60</li><li><b>Тип:</b> Blunt</li></ul>",
-          "contentEn": "<p>Basic melee weapon. Deals blunt damage.</p><ul><li><b>Damage:</b> 6 (13)</li><li><b>Attack Rate:</b> 1.60</li><li><b>Type:</b> Blunt</li></ul>"
+          "contentRu": "<p>Базовое оружие ближнего боя. Наносит тупой урон.</p><ul><li><b>Урон:</b> 6 (13)</li><li><b>Скорость атаки:</b> 1.60</li><li><b>Тип:</b> Blunt</li></ul><br>\r\nНету прочности.",
+          "contentEn": "<p>Basic melee weapon. Deals blunt damage.</p><ul><li><b>Damage:</b> 6 (13)</li><li><b>Attack Rate:</b> 1.60</li><li><b>Type:</b> Blunt</li></ul><br>\r\nHas no durability."
         },
         {
           "id": "w_bat",
