@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki — The Late Light</title>
+    <title>Info - The Late Light</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -327,7 +327,7 @@
 <body>
 
     <div class="strip">
-        <div class="brand"><span class="dot"></span>THE LATE LIGHT<small>WIKI</small></div>
+        <div class="brand"><span class="dot"></span>THE LATE LIGHT<small>INFO</small></div>
         <div class="strip-right">
             <button class="lang-toggle active" id="btn-lang" onclick="toggleLang()">
                 <i class="fas fa-globe"></i> <span id="lang-label">RU</span>
@@ -353,7 +353,7 @@
         </main>
     </div>
 
-    <footer>Wiki проекта The Late Light &middot; ведётся разработчиком &middot; bigWater6464</footer>
+    <footer>Информация об игре The Late Light.</footer>
 
     <script>
         const DEFAULT_DATA = {
@@ -400,7 +400,7 @@
         currentLang = currentLang === 'ru' ? 'en' : 'ru';
         localStorage.setItem('tll_wiki_lang', currentLang);
         document.getElementById('lang-label').textContent = currentLang.toUpperCase();
-        document.getElementById('search-input').placeholder = currentLang === 'ru' ? 'Поиск по вики...' : 'Search wiki...';
+        document.getElementById('search-input').placeholder = currentLang === 'ru' ? 'Поиск по информации...' : 'Search info...';
         renderSidebar();
         renderContent();
         }
@@ -495,7 +495,7 @@
         document.getElementById("search-input").addEventListener("input", renderSidebar);
 
         document.getElementById('lang-label').textContent = currentLang.toUpperCase();
-        document.getElementById('search-input').placeholder = currentLang === 'ru' ? 'Поиск по вики...' : 'Search wiki...';
+        document.getElementById('search-input').placeholder = currentLang === 'ru' ? 'Поиск по информации...' : 'Search info...';
 
         (async function init() {
         await loadData();
